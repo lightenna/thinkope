@@ -2,10 +2,8 @@
 Thinking, syncopated
 
 ## About
-This is the open-source code repository for Thinkope.  If you'
-@todo write intro text
-@todo insert link to app (blank page)
-@todo insert link to fork example project
+This is the open-source code repository for Thinkope.  If you'd like to use Thinkope, please either [create a blank thinkope]() or [fork an example thinkope]().
+
 Alternatively if you'd like to develop components/views for app, or instantiate your own Thinkope server, please read the [Getting started](#getting-started) section below.
 
 ## Getting started
