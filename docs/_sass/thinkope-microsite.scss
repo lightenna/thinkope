@@ -1,0 +1,10 @@
+
+// show normal bullets on lists that feature 'tasks'
+.task-list {
+  // restore classless default
+  padding-left: 40px;
+
+  li {
+    list-style-type: disc;
+  }
+}

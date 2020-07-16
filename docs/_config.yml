@@ -1,0 +1,111 @@
+# Welcome to Jekyll!
+# Site settings {{ site.varname }}
+title: Thinkope
+email: cleverlight@users.noreply.github.com
+description: >-
+    Thinkope is an online collaboration tool
+twitter_username: "lightenna"
+github_username: "lightenna"
+minimal_mistakes_skin: default
+search: false
+
+# Build settings
+markdown: kramdown
+remote_theme: mmistakes/minimal-mistakes
+# Outputting
+permalink: /:categories/:title/
+paginate: 5 # amount of posts to show
+paginate_path: /page:num/
+timezone: "Europe/London" # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+include:
+    - blog
+    - indices
+
+# Exclude from processing
+exclude:
+    - Gemfile
+    - Gemfile.lock
+    - node_modules
+    - vendor/bundle/
+    - vendor/cache/
+    - vendor/gems/
+    - vendor/ruby/
+
+# Plugins (previously gems:)
+plugins:
+    - jekyll-paginate
+    - jekyll-sitemap
+    - jekyll-gist
+    - jekyll-feed
+    - jemoji
+    - jekyll-include-cache
+
+# Analytics
+analytics:
+    provider: "google-universal" # false (default), "google", "google-universal", "custom"
+    google:
+        tracking_id: "UA-25142278-5"
+        anonymize_ip: # true, false (default)
+
+# site author
+author:
+    name             : "Alex Stanhope"
+    avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+    bio              : "Technical Architect"
+    location         : "Leeds, UK"
+    email            :
+    links:
+        - label: "Twitter"
+          icon: "fab fa-fw fa-twitter-square"
+          url: "https://twitter.com/alex_stanhope"
+        - label: "LinkedIn"
+          icon: "fab fa-fw fa-linkedin"
+          url: "https://linkedin.com/in/alexstanhope/"
+
+# site Footer
+footer:
+    links:
+        - label: "Twitter"
+          icon: "fab fa-fw fa-twitter-square"
+          url: "https://twitter.com/lightenna"
+        - label: "Facebook"
+          icon: "fab fa-fw fa-facebook-square"
+          url: "https://facebook.com/lightenna"
+        - label: "GitHub"
+          icon: "fab fa-fw fa-github"
+          url: "https://github.com/lightenna"
+
+defaults:
+    # blog (was _posts)
+    - scope:
+          path: ""
+          type: posts
+      values:
+          layout: "splash"
+          author_profile: false
+          read_time: true
+          comments: true
+          share: true
+          related: true
+    # indices (was _pages)
+    - scope:
+          path: "indices"
+          type: pages
+      values:
+          layout: "splash"
+          author_profile: false
+    # project
+    - scope:
+          path: "project"
+          type: pages
+      values:
+          layout: "splash"
+          author_profile: false
+
+category_archive:
+    type: liquid
+    path: /categories/
+tag_archive:
+    type: liquid
+    path: /tags/
