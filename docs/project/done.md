@@ -2,6 +2,8 @@
 title: "Done"
 ---
 
+### enforce HTTPS on GitHub Pages
+
 ### create favicon.ico
 + install in /docs
     + try in nested alternative folder
