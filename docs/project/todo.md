@@ -2,6 +2,8 @@
 title: "Todo"
 ---
 
+### enforce HTTPS on GitHub Pages
+
 ### evaluate todo and done lists on GitHub.com
 + establish what the default view looks like
 + check README.md markdown section link ('Getting started')
