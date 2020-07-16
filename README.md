@@ -8,7 +8,7 @@ This is the open-source code repository for Thinkope.  If you'
 @todo insert link to fork example project
 Alternatively if you'd like to develop components/views for app, or instantiate your own Thinkope server, please read the [Getting started](#getting-started) section below.
 
-## Getting started {: #getting-started }
+## Getting started
 Thinkope is a React app ([/app](/app)) that connects to an array of containerised microservices ([/microservices](/microservices)), which can be deployed using Kubernetes.
 
 ### App deployment (dev)
