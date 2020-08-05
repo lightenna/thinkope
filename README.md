@@ -34,5 +34,5 @@ bundler exec jekyll serve --future
 ### Repo organisation
 * [./app](./app) - single page app (SPA) source code
 * [./docs](./docs) - documentation and Jekyll-based microsite
-  * [./docs/app](./docs/app) - compiled app as a collection of static files
+  * [./docs/app](./docs/app) - demo app as a collection of compiled static files, served through microsite
 * [./microservices](./microservices) - directory of containerised microservices

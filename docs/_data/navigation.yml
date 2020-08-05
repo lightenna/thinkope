@@ -3,10 +3,10 @@ main:
     url: /about/
   - title: "Demo"
     url: /app/
+  - title: "Help"
+    url: /help/
 
 # These are all real pages, just not currently used in navigation
-#  - title: "Help"
-#    url: /help/
 #  - title: "Blog"
 #    url: /posts/
 #  - title: "Categories"

@@ -19,8 +19,11 @@ paginate_path: /page:num/
 timezone: "Europe/London" # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 include:
-    - blog
-    - indices
+    - _posts
+    # assets (implicit)
+    - tech
+    # project (excluded from microsite, viewed through Thinkope)
+    # sparks (excluded from microsite, templates instantiated through Thinkope)
 
 # Exclude from processing
 exclude:
@@ -66,6 +69,10 @@ author:
 # site Footer
 footer:
     links:
+        - label: "Project management"
+          url: "/project"
+        - label: "Technical documentation"
+          url: "/tech"
         - label: "Twitter"
           icon: "fab fa-fw fa-twitter-square"
           url: "https://twitter.com/lightenna"
@@ -79,7 +86,7 @@ footer:
 defaults:
     # blog (was _posts)
     - scope:
-          path: ""
+          path: "_posts/blog"
           type: posts
       values:
           layout: "splash"
@@ -88,16 +95,16 @@ defaults:
           comments: true
           share: true
           related: true
-    # indices (was _pages)
+    # pages (was _pages)
     - scope:
-          path: "indices"
+          path: "_posts/pages"
           type: pages
       values:
           layout: "splash"
           author_profile: false
-    # project
+    # tech
     - scope:
-          path: "project"
+          path: "tech"
           type: pages
       values:
           layout: "splash"
