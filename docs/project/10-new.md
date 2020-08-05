@@ -1,18 +1,14 @@
 ---
-title: "Todo"
+title: "Backlog"
+type: "task"
+state: "new"
 ---
-
-### evaluate todo and done lists on GitHub.com
-+ establish what the default view looks like
-+ check README.md markdown section link ('Getting started')
-    + otherwise try link reference
-[![link]()](https://gist.github.com/asabaylus/3071099#gistcomment-3366191)
 
 ### create react-based SPA
 + start with React Router
 [![link]()](https://github.com/rafgraph/spa-github-pages)
 
-### create first microservice
+### create first microservices
 + create cadence
 + create auth
     + might be worth doing auth clean, without any deps

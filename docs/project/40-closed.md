@@ -1,5 +1,7 @@
 ---
-title: "Done"
+title: "Completed tasks"
+type: "task"
+state: "closed"
 ---
 
 ### enforce HTTPS on GitHub Pages
