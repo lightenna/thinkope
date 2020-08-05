@@ -4,6 +4,13 @@ type: "task"
 state: "closed"
 ---
 
+### evaluate lists on GitHub.com [parent](user-story/user-can-view-a-thinkope)
++ [X] commit and push latest site
++ [X] establish what the default view looks like
++ [X] check README.md markdown section link ('Getting started')
+    + otherwise try
+[link reference](https://gist.github.com/asabaylus/3071099#gistcomment-3366191)
+
 ### enforce HTTPS on GitHub Pages
 
 ### create favicon.ico
