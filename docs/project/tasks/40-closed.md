@@ -1,6 +1,15 @@
 ---
-title: "Done"
+title: "Completed tasks"
+type: "task"
+state: "closed"
 ---
+
+### evaluate lists on GitHub.com [parent](user-story/user-can-view-a-thinkope)
++ [X] commit and push latest site
++ [X] establish what the default view looks like
++ [X] check README.md markdown section link ('Getting started')
+    + otherwise try
+[link reference](https://gist.github.com/asabaylus/3071099#gistcomment-3366191)
 
 ### enforce HTTPS on GitHub Pages
 
@@ -29,10 +38,10 @@ title: "Done"
         + can manage them with thinkope app
 + single repo with remote theme
     + use remote theme
-[![link]()](https://github.blog/2017-11-29-use-any-theme-with-github-pages/)
-[![link]()](https://github.com/mmistakes/minimal-mistakes#remote-theme-method)
+[remote themes in github pages](https://github.blog/2017-11-29-use-any-theme-with-github-pages/)
+[remote theme use of MM](https://github.com/mmistakes/minimal-mistakes#remote-theme-method)
     + take the files from the starter
-[![link]()](https://github.com/mmistakes/mm-github-pages-starter)
+[MM github pages starter](https://github.com/mmistakes/mm-github-pages-starter)
 + [X] test locally
     + sort out bundler deps
         + [O] if they work, add to -iac
