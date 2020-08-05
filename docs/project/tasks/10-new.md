@@ -4,12 +4,12 @@ type: "task"
 state: "new"
 ---
 
-### create first view (parent)[user-story/user-can-view-a-thinkope]
+### create first view [parent](user-story/user-can-view-a-thinkope)
 + is a React component
 + simple view
 + takes JSON data and renders to DOM
 
-### create container view (parent)[user-story/user-can-view-a-thinkope]
+### create container view [parent](user-story/user-can-view-a-thinkope)
 + acceptance criteria
     + contains nested 1 or more sub-views
     + allows proportional screen splitting
