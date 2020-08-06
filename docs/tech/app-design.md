@@ -1,0 +1,22 @@
+---
+title: "App design"
+type: "techdoc"
+---
+
+### Research techs to shape architecture
++ React - component-driven views
++ Redux - for editor undo history
++ [Next.js](https://nextjs.org/) - SSR
++ [Next Redux Wrapper](https://github.com/kirill-konshin/next-redux-wrapper) - for sharing Redux stores server-side
++ [Draft.js](https://github.com/facebook/draft-js) - for editor view
++ Either [CouchDB](https://couchdb.apache.org/) and [PouchDB](https://pouchdb.com/) - syncable database (self hosted)
++ Or [Firebase](https://firebase.google.com/) - syncable database (PaaS)
+
+### Data architecture
++ Changes are persisted as immutable nodes in update chain
++ Undo/redo as traversal of that chain
++ Real-time pulls bring other users' changes into chain
+    + potentially including merge conflicts
+    + Could merge by inserting pulled state into update chain then re-executing the downstream chain
++ Save as commit and push
+    + very little separation between (user's) local repo and (shared) remote repo

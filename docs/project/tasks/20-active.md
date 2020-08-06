@@ -13,3 +13,8 @@ state: "active"
 + [ ] build
 + [ ] test URL rewriting
 
+### create index page for /tech
+- cannot rely on web server (directory listing) index pages
+    + fine when using jekyll locally
+    - not when published
+
