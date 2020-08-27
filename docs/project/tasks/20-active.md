@@ -9,12 +9,9 @@ state: "active"
 [SPA ref](https://github.com/rafgraph/spa-github-pages)
     + [X] set up 404 redirection as part of integrated microsite
         + keeps app source relatively clean
++ [X] select react+redux boilerplate
 + [ ] create simple boilerplate app source
+    + using [Slingshot](https://github.com/coryhouse/react-slingshot)
 + [ ] build
 + [ ] test URL rewriting
-
-### create index page for /tech
-- cannot rely on web server (directory listing) index pages
-    + fine when using jekyll locally
-    - not when published
 
