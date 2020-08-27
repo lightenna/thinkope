@@ -15,3 +15,5 @@ state: "active"
 + [ ] build
 + [ ] test URL rewriting
 
+### think about internal data structure
++ see /tech

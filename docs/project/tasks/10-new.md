@@ -9,6 +9,9 @@ state: "new"
 + simple view
 + takes JSON data and renders to DOM
 
+### produce mock JSON data
++ static example to feed initial view development
+
 ### create container view [parent](user-story/user-can-view-a-thinkope)
 + acceptance criteria
     + contains nested 1 or more sub-views
