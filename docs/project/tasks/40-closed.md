@@ -2,7 +2,20 @@
 title: "Completed tasks"
 type: "task"
 state: "closed"
+sort: "newest at top"
 ---
+
+### create index page for /tech
+- cannot rely on web server (directory listing) index pages
+    + fine when using jekyll locally
+    - not when published
++ index or README?
+    + index
+    + the README is for GitHub.com, which already indexes fine for now
++ tech should use Thinkope too
+    + /tech is full of thinking
+    + it's a less clear use-case than /project (fits easily with todo)
+        + but it's exactly what we're trying to encourage
 
 ### evaluate lists on GitHub.com [parent](user-story/user-can-view-a-thinkope)
 + [X] commit and push latest site
