@@ -48,3 +48,19 @@ type: "techdoc"
     + thinking
     + more thinking
     + [ ] something to do
+
+### Terminating full stops
++ People generally don't put stops at the end of list items
+    + It feels unnatural, even though it may present a technical challenge to divine them later
+> Full stops can be optionally included to force a new sentence
+
+### Initial capital letters
++ Not sure about this one yet
++ I suspect we need some kind of marker for sentences
+    + a single indent is probably a comma
++ A series of same-ident lines produce a series of sentences
+    + one
+    + two
+    + Three
+        + renders as `One. Two. Three.`
+> Capital letters can be optionally included to force a new sentence
