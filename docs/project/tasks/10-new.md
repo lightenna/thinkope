@@ -12,13 +12,6 @@ state: "new"
 ### produce mock JSON data
 + static example to feed initial view development
 
-### create container view [parent](user-story/user-can-view-a-thinkope)
-+ acceptance criteria
-    + contains nested 1 or more sub-views
-    + allows proportional screen splitting
-    + supports SSR
-    + passes down URL-based view information to sub-views
-
 ### create first microservices
 + create cadence
 + create auth
