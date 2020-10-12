@@ -13,6 +13,7 @@ state: "active"
 + [X] create simple boilerplate app source
     + using [Slingshot](https://github.com/coryhouse/react-slingshot)
 + [X] build
++ [X] route to simple mock pages
 + [ ] test URL rewriting
     + symmetric with 404 handler that injects ?p= see [404.md](/docs/assets/404.md)
     + make app rewrite URL in history
@@ -21,10 +22,10 @@ state: "active"
 
 ### create container view [parent](user-story/user-can-view-a-thinkope)
 + acceptance criteria
-    + contains nested 1 or more sub-views
-    + allows proportional screen splitting
-    + supports SSR
-    + passes down URL-based view information to sub-views
+    + [ ] contains nested 1 or more sub-views
+    + [ ] allows proportional screen splitting
+    + [ ] supports SSR
+    + [ ] passes down URL-based view information to sub-views
 
 ### think about internal data structure
 + see /tech

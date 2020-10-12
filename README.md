@@ -9,20 +9,19 @@ Alternatively if you'd like to develop components/views for app, or instantiate 
 ## Getting started
 Thinkope is a React app ([/app](/app)) that connects to an array of containerised microservices ([/microservices](/microservices)), which can be deployed using Kubernetes.
 
-### App deployment (dev)
+### App deployment
 ```
 cd app
 npm install
+npm run
 ```
 
-### App deployment (production)
-@todo write build instructions to generate bundles
-
-### Docker compose deployment (dev)
-@todo write deployment guide
-
-### Kubernetes deployment (production)
-@todo write deployment guide
+### Datasource deployment
+```
+cd services/datasources/local
+npm install
+npm run
+```
 
 ### Jekyll-based microsite
 ```
@@ -35,4 +34,5 @@ bundler exec jekyll serve --future
 * [./app](./app) - single page app (SPA) source code
 * [./docs](./docs) - documentation and Jekyll-based microsite
   * [./docs/app](./docs/app) - demo app as a collection of compiled static files, served through microsite
-* [./microservices](./microservices) - directory of containerised microservices
+* [./services](./services) - directory of services
+  * [./services/datasources](./services/datasources) - datasources to serve JLOL into the app

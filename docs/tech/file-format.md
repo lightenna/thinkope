@@ -52,12 +52,13 @@ type: "techdoc"
 ### Terminating full stops
 + People generally don't put stops at the end of list items
     + It feels unnatural, even though it may present a technical challenge to divine them later
++ We can infer a full stop from a line that starts with a capital letter
 > Full stops can be optionally included to force a new sentence
 
 ### Initial capital letters
 + Not sure about this one yet
 + I suspect we need some kind of marker for sentences
-    + a single indent is probably a comma
+    + a single indent is probably a comma or a semi-colon
 + A series of same-ident lines produce a series of sentences
     + one
     + two
