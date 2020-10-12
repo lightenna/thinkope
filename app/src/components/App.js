@@ -16,7 +16,8 @@ class App extends React.Component {
       <div>
         <h2>Far out in the uncharted backwaters...</h2>
         <Switch>
-          <Route path="/view" component={View} />
+          <Route path="/@:datasource/:path+" component={View} />
+          <Route path="/:path+" component={View} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>
