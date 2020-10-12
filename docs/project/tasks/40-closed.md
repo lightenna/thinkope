@@ -5,6 +5,26 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
+### create react-based SPA [parent](user-story/user-can-view-a-thinkope)
++ [X] start with React Router
+[SPA ref](https://github.com/rafgraph/spa-github-pages)
+    + [X] set up 404 redirection as part of integrated microsite
+        + keeps app source relatively clean
++ [X] select react+redux boilerplate
++ [X] create simple boilerplate app source
+    + using [Slingshot](https://github.com/coryhouse/react-slingshot)
++ [X] build
++ [X] route to simple mock pages
++ [X] test URL rewriting
+    + symmetric with 404 handler that injects ?p= see [404.md](/docs/assets/404.md)
+    + make app rewrite URL in history
+        + remove ?p=/
+    + [test URL](https://www.thinkope.com/app/?p=/fish/fowl)
++ [X] fix /app embedding
+    + routes don't work when prefixed with /app
+        + mock-up local /dist with parameterised basepath
++ [X] clear down dist folder before build
+
 ### create simple placeholder favicon [parent](user-story/user-can-view-a-thinkope)
 + [Th](https://favicon.io/favicon-generator/?t=Th&ff=ABeeZee&fs=70&fc=%23FFFFFF&b=rounded&bc=%23888)
 
