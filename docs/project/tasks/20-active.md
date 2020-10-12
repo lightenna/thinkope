@@ -14,11 +14,15 @@ state: "active"
     + using [Slingshot](https://github.com/coryhouse/react-slingshot)
 + [X] build
 + [X] route to simple mock pages
-+ [ ] test URL rewriting
++ [X] test URL rewriting
     + symmetric with 404 handler that injects ?p= see [404.md](/docs/assets/404.md)
     + make app rewrite URL in history
         + remove ?p=/
     + [test URL](https://www.thinkope.com/app/?p=/fish/fowl)
++ [X] fix /app embedding
+    + routes don't work when prefixed with /app
+        + mock-up local /dist with parameterised basepath
++ [ ] clear down dist folder before build
 
 ### create container view [parent](user-story/user-can-view-a-thinkope)
 + acceptance criteria
