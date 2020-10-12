@@ -7,6 +7,7 @@ import path from 'path';
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
+  'process.env.APP_BASEPATH': JSON.stringify('/app/'),
   __DEV__: false
 };
 

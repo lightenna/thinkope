@@ -6,7 +6,9 @@ import { createBrowserHistory } from "history";
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import createRootReducer from '../reducers';
 
-export const history = createBrowserHistory();
+export const history = createBrowserHistory({
+  basename: process.env.APP_BASEPATH || '/',
+});
 const connectRouterHistory = connectRouter(history);
 
 function configureStoreProd(initialState) {
