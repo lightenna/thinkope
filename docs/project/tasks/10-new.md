@@ -11,15 +11,24 @@ state: "new"
 
 ### produce mock JSON data
 + static example to feed initial view development
+    + will also help with testing
 
-### create container view [parent](user-story/user-can-view-a-thinkope)
-+ acceptance criteria
-    + contains nested 1 or more sub-views
-    + allows proportional screen splitting
-    + supports SSR
-    + passes down URL-based view information to sub-views
+### create local file service [parent](user-story/user-can-view-a-thinkope)
++ read file from local source
+    + Node.js microservice
+    + local instance of TH that serves local repo
++ empowers coders to clone template/checkout the repo
+    + work on local lists using the interface
+    + develop views
++ A/C
+    + [ ] assign name to service
+    + [ ] service spins up within constrained scope
+        + should not have access to whole filesystem
+    + [ ] request includes relative path filename
+    + [ ] response returns JLOL as JSON
+        + does not need to be highly-featured; simplest thing for now
 
-### create first microservices
+### create first remote microservices
 + create cadence
 + create auth
     + might be worth doing auth clean, without any deps

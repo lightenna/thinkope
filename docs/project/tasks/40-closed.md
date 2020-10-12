@@ -2,8 +2,11 @@
 title: "Completed tasks"
 type: "task"
 state: "closed"
-sort: "newest at top"
+sort: "newly completed at top"
 ---
+
+### create simple placeholder favicon [parent](user-story/user-can-view-a-thinkope)
++ [Th](https://favicon.io/favicon-generator/?t=Th&ff=ABeeZee&fs=70&fc=%23FFFFFF&b=rounded&bc=%23888)
 
 ### create index page for /tech
 - cannot rely on web server (directory listing) index pages

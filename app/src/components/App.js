@@ -2,6 +2,9 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { hot } from "react-hot-loader";
+import { Route, Switch } from "react-router-dom";
+import View from "./View";
+import NotFoundPage from "./NotFoundPage";
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -12,6 +15,10 @@ class App extends React.Component {
     return (
       <div>
         <h2>Far out in the uncharted backwaters...</h2>
+        <Switch>
+          <Route path="/view" component={View} />
+          <Route component={NotFoundPage} />
+        </Switch>
       </div>
     );
   }
