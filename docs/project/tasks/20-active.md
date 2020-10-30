@@ -8,6 +8,9 @@ state: "active"
 + too many issues with hot reloading
 + use create-react-app instead
 `npx create-react-app my-app --template redux`
++ [X] make tests run
++ [X] rebuild webpack config
++ [ ] deploy live
 
 ### create container view [parent](user-story/user-can-view-a-thinkope)
 + acceptance criteria
