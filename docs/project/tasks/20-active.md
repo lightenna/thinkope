@@ -4,14 +4,6 @@ type: "task"
 state: "active"
 ---
 
-### migrate away from Slingshot [parent](user-story/user-can-view-a-thinkope)
-+ too many issues with hot reloading
-+ use create-react-app instead
-`npx create-react-app my-app --template redux`
-+ [X] make tests run
-+ [X] rebuild webpack config
-+ [ ] deploy live
-
 ### create container view [parent](user-story/user-can-view-a-thinkope)
 + acceptance criteria
     + [ ] contains nested 1 or more sub-views

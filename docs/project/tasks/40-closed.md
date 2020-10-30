@@ -5,6 +5,14 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
+### migrate away from Slingshot [parent](user-story/user-can-view-a-thinkope)
++ too many issues with hot reloading
++ use create-react-app instead
+`npx create-react-app my-app --template redux`
++ [X] make tests run
++ [X] rebuild webpack config
++ [X] deploy live
+
 ### create react-based SPA [parent](user-story/user-can-view-a-thinkope)
 + [X] start with React Router
 [SPA ref](https://github.com/rafgraph/spa-github-pages)
