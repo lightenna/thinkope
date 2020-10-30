@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
 
-const View = () => {
+const View = (props) => {
   const params = useParams();
   const datasource = params.datasource || 'local';
   return (

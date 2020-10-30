@@ -1,32 +1,24 @@
-/* eslint-disable import/no-named-as-default */
-import PropTypes from "prop-types";
-import React from "react";
-import { hot } from "react-hot-loader";
+import React from 'react';
 import { Route, Switch } from "react-router-dom";
+import './App.scss';
 import View from "./View";
 import NotFoundPage from "./NotFoundPage";
 
-// This is a class-based component because the current
-// version of hot reloading won't hot reload a stateless
-// component at the top-level.
-
 class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <h2>Far out in the uncharted backwaters...</h2>
-        <Switch>
-          <Route path="/@:datasource/:path+" component={View} />
-          <Route path="/:path+" component={View} />
-          <Route component={NotFoundPage} />
-        </Switch>
-      </div>
-    );
-  }
+
+    render() {
+        return (
+            <div className="App">
+                <h2>Far out in the uncharted backwaters...</h2>
+                <Switch>
+                    <Route path="/@:datasource/:path+" component={View} />
+                    <Route path="/:path+" component={View} />
+                    <Route component={NotFoundPage} />
+                </Switch>
+            </div>
+        );
+    }
+
 }
 
-App.propTypes = {
-  children: PropTypes.element
-};
-
-export default hot(module)(App);
+export default App;

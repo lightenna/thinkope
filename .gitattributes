@@ -19,6 +19,7 @@
 *.xls binary
 *.bin binary
 *.te binary
+*.ico binary
 
 # Don't modify Windows files
 *.psm1 binary
