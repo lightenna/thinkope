@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class View extends React.Component {
     render() {
@@ -12,6 +13,14 @@ class View extends React.Component {
                 </ul>
             </div>
         );
+    }
+
+    static get propTypes() {
+        return {
+            path: PropTypes.string.isRequired,
+            datasource: PropTypes.string.isRequired,
+            view: PropTypes.object.isRequired
+        };
     }
 }
 
