@@ -4,6 +4,8 @@ type: "task"
 state: "active"
 ---
 
+### fix missing manifest.json for packaged docsapp
+
 ### create container view [parent](user-story/user-can-view-a-thinkope)
 + acceptance criteria
     + [ ] contains nested 1 or more sub-views
