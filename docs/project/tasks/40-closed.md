@@ -5,6 +5,8 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
+### stop flash of 'Page not found' [parent](user-story/user-can-view-a-thinkope)
+
 ### migrate away from Slingshot [parent](user-story/user-can-view-a-thinkope)
 + too many issues with hot reloading
 + use create-react-app instead
