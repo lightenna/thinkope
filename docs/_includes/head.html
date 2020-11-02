@@ -1,3 +1,9 @@
+{%- if page.delayjs -%}
+<script>
+  document.documentElement.style.setProperty('display', 'none');
+</script>
+{%- endif -%}
+
 <meta charset="utf-8">
 
 {% include seo.html %}
@@ -10,11 +16,6 @@
 <script>
   document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 </script>
-{%- if page.delayjs -%}
-<script>
-  document.documentElement.className += ' delayhide ';
-</script>
-{%- endif -%}
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
