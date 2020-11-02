@@ -4,9 +4,10 @@ const WebpackManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
+const BASEPATH = '/app/';
 const GLOBALS = {
     'process.env.NODE_ENV': JSON.stringify('production'),
-    'process.env.APP_BASEPATH': JSON.stringify('/app/'),
+    'process.env.APP_BASEPATH': JSON.stringify(BASEPATH),
     __DEV__: false
 };
 
