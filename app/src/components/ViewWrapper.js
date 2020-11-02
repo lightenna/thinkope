@@ -13,7 +13,7 @@ function isString(str) {
 }
 
 function isJSONString(str) {
-    return str.indexOf('"');
+    return (str.indexOf('"') !== -1);
 }
 
 function getView(query) {
@@ -24,7 +24,7 @@ function getView(query) {
                 return Object.assign({}, JSON.parse(query.view));
             } else {
                 // return default view with type overridden
-                return Object.assign({}, {type: query.view});
+                return Object.assign({}, default_view, {type: query.view});
             }
         }
     }
