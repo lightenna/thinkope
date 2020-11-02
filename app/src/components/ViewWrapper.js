@@ -10,15 +10,15 @@ const default_view = {
 
 class ViewWrapper extends React.Component {
 
-    isString = (str) => {
+    isString(str) {
         return (typeof str === "string");
     };
 
-    isJSONString = (str) => {
+    isJSONString(str) {
         return (str.indexOf('"') !== -1);
     };
 
-    getView = (query) => {
+    getView(query) {
         if (query.view) {
             if (this.isString(query.view)) {
                 if (this.isJSONString(query.view)) {
@@ -37,11 +37,11 @@ class ViewWrapper extends React.Component {
         const params = this.props.match.params;
         const query = qs.parse(this.props.location.search, {ignoreQueryPrefix: true});
         // derived
-        const datasource = params.datasource || default_datasource;
         const view = this.getView(query);
-        console.log(this.props);
+        const datasource = params.datasource || default_datasource;
+        const path = '/' + (params.path || "");
         return (
-            <View view={view} datasource={datasource} path={params.path}/>
+            <View view={view} datasource={datasource} path={path}/>
         );
     }
 }
