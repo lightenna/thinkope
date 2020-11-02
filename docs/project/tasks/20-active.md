@@ -10,9 +10,10 @@ state: "active"
     + [ ] allows proportional screen splitting
     + [ ] supports SSR
     + [ ] passes down URL-based view information to sub-views
-+ pass view state into view as prop
++ [ ] pass view state into view as prop
     + sourced from URL
     + nested children
++ [ ] write unit tests for View
 
 ### think about internal data structure
 + see /tech

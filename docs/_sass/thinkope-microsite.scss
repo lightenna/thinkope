@@ -1,4 +1,9 @@
 
+// deliberately don't show certain (404-spa) pages until we're ready
+.delayhide {
+  display: none;
+}
+
 // show normal bullets on lists that feature 'tasks'
 .task-list {
   // restore classless default
