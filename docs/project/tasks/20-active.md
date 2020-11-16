@@ -23,7 +23,7 @@ state: "active"
     + initially just a single a:b split
         + but do as an array to be forward looking
         + could change to a:b:c for a:b:c...y:z split in the future
-+ [ ] migrate tests back to Enzyme
++ [X] migrate tests back to Enzyme
     + need to get them all working
 + [ ] split out tests for lazy-loaded components
     + just test them as isolated components

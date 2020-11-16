@@ -27,7 +27,8 @@ class ContainerView extends React.Component {
 
     static get propTypes() {
         return {
-            sub: PropTypes.array.isRequired
+            sub: PropTypes.array.isRequired,
+            view: PropTypes.object.isRequired
         };
     }
 }
