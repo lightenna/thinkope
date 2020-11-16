@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class View extends React.Component {
+class GenericView extends React.Component {
     render() {
         return (
             <div>
@@ -11,6 +11,7 @@ class View extends React.Component {
                     <li>I am a view from {this.props.datasource}</li>
                     <li>I am visualised using the `{this.props.view.type}` view</li>
                 </ul>
+                {this.props.sub}
             </div>
         );
     }
@@ -24,4 +25,4 @@ class View extends React.Component {
     }
 }
 
-export default View;
+export default GenericView;
