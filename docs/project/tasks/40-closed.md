@@ -5,6 +5,8 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
+### fix missing manifest.json for packaged docsapp
+
 ### stop flash of 'Page not found' [parent](user-story/user-can-view-a-thinkope)
 
 ### migrate away from Slingshot [parent](user-story/user-can-view-a-thinkope)
