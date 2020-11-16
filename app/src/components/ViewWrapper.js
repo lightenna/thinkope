@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import qs from 'qs';
 import GenericLazyLoad from './GenericLazyLoad';
 // directly loaded views
-import GenericView from './views/GenericView';
+import TestView from './views/TestView';
 import ContainerView from './views/ContainerView';
 import PropTypes from "prop-types";
 // lazy-loaded views
@@ -40,16 +40,23 @@ class ViewWrapper extends React.Component {
     };
 
     render_specialised_view(type, view, key, datasource, path, subviews) {
+        const data = {
+            'path': path,
+            'datasource': datasource
+        };
+        // @todo load data
+        data.jlol = [];
+        // use type to instantiate correct view type
         switch (type) {
             case 'container' :
-                const container_view = <ContainerView view={view} key={key} datasource={datasource} path={path} sub={subviews} />;
+                const container_view = <ContainerView view={view} key={key} data={data} sub={subviews} />;
                 return <GenericLazyLoad target={container_view} detectIfLazy={ContainerView}/>;
             case 'editor' :
-                const editor_view = <EditorView view={view} key={key} datasource={datasource} path={path} sub={subviews} />;
+                const editor_view = <EditorView view={view} key={key} data={data} sub={subviews} />;
                 return <GenericLazyLoad target={editor_view} detectIfLazy={EditorView}/>;
-            case 'generic' :
+            case 'test' :
             default :
-                return <GenericView view={view} key={key} datasource={datasource} path={path} sub={subviews} />;
+                return <TestView view={view} key={key} data={data} sub={subviews} />;
         }
     };
 

@@ -25,9 +25,13 @@ state: "active"
         + could change to a:b:c for a:b:c...y:z split in the future
 + [X] migrate tests back to Enzyme
     + need to get them all working
-+ [ ] split out tests for lazy-loaded components
++ [X] split out tests for lazy-loaded components
     + just test them as isolated components
         + Enzyme doesn't cope well with trying to lazy-load them from the parent component
++ [X] instantiate editor view (lazy loaded)
+    + set up Enzyme test
+    + leave editor blank for now
++ [X] refactor views to require data rather than datasource/path
 + [ ] get container view to show a line separating the contained views
 + [ ] detect hover over line
     + allow line to be dragged left or right

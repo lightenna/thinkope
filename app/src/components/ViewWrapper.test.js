@@ -14,15 +14,15 @@ test('wraps view correctly with empty params', () => {
     wrapper.unmount();
 });
 
-test('wraps container view correctly with multiple sub-views', () => {
-    const path = "one/two", querystr = "view={\"type\":\"container\",\"orient\":\"horiz\",\"split\":[35.0,65.0],\"sub\":[{\"type\":\"generic\"},{\"type\":\"generic\"}]}";
+test('wraps view correctly with multiple sub-views', () => {
+    const path = "one/two", querystr = "view={\"type\":\"container\",\"orient\":\"horiz\",\"split\":[35.0,65.0],\"sub\":[{\"type\":\"test\"},{\"type\":\"test\"}]}";
     const wrapper = mount(
         <ViewWrapper.WrappedComponent match={{ params: { path: path}}} location={{ search: querystr}} />
     );
     // check for container view with two nested subviews
     expect(wrapper.find('.view')).toHaveLength(3);
     expect(wrapper.find('.type-container')).toHaveLength(1);
-    expect(wrapper.find('.type-generic')).toHaveLength(2);
+    expect(wrapper.find('.type-test')).toHaveLength(2);
     wrapper.unmount();
 });
 
