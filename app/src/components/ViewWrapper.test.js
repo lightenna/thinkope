@@ -1,15 +1,32 @@
 import React from 'react';
 import {render} from '@testing-library/react';
+import {mount, shallow} from '../enzyme_wrapper';
 import ViewWrapper from './ViewWrapper';
 
+// Enzyme tests
 test('wraps view correctly with empty params', () => {
     const path = "", querystr = "";
-    const {getByText} = render(
+    const wrapper = mount(
         <ViewWrapper.WrappedComponent match={{ params: { path: path}}} location={{ search: querystr}} />
     );
-    expect(getByText(/view of \//i)).toBeInTheDocument();
+    const html = wrapper.html();
+    expect(wrapper.find('.view')).toHaveLength(1);
+    wrapper.unmount();
 });
 
+test('wraps container view correctly with multiple sub-views', () => {
+    const path = "one/two", querystr = "view={\"type\":\"container\",\"orient\":\"horiz\",\"split\":[35.0,65.0],\"sub\":[{\"type\":\"generic\"},{\"type\":\"generic\"}]}";
+    const wrapper = mount(
+        <ViewWrapper.WrappedComponent match={{ params: { path: path}}} location={{ search: querystr}} />
+    );
+    // check for container view with two nested subviews
+    expect(wrapper.find('.view')).toHaveLength(3);
+    expect(wrapper.find('.type-container')).toHaveLength(1);
+    expect(wrapper.find('.type-generic')).toHaveLength(2);
+    wrapper.unmount();
+});
+
+// RTL tests
 test('wraps view correctly with typical params', () => {
     const path = "one/two", querystr = "";
     const {getByText} = render(
@@ -33,4 +50,3 @@ test('wraps view correctly with typical params and query string JSON object', ()
     );
     expect(getByText(/`fish` view/i)).toBeInTheDocument();
 });
-
