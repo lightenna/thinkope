@@ -1,0 +1,10 @@
+.view.type-container {
+  .sub {
+    margin: 0;
+  }
+  &.orient-horiz {
+    .sub {
+      float: left;
+    }
+  }
+}

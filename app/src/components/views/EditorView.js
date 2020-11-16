@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class GenericView extends React.Component {
+class EditorView extends React.Component {
     render() {
         return (
-            <div className={"view type-generic"}>
-                <h1>Generic View</h1>
+            <div>
+                <h1>Editor view</h1>
                 <ul>
                     <li>I am a view of {this.props.path}</li>
                     <li>I am a view from {this.props.datasource}</li>
                     <li>I am visualised using the `{this.props.view.type}` view</li>
                 </ul>
+                {this.props.sub}
             </div>
         );
     }
@@ -24,4 +25,4 @@ class GenericView extends React.Component {
     }
 }
 
-export default GenericView;
+export default EditorView;
