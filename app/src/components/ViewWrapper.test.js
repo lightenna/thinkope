@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from '@testing-library/react';
-import {mount, shallow} from '../enzyme_wrapper';
+import {mount} from '../enzyme_wrapper';
 import ViewWrapper from './ViewWrapper';
 
 // Enzyme tests
@@ -9,7 +9,7 @@ test('wraps view correctly with empty params', () => {
     const wrapper = mount(
         <ViewWrapper.WrappedComponent match={{ params: { path: path}}} location={{ search: querystr}} />
     );
-    const html = wrapper.html();
+    // const html = wrapper.html();
     expect(wrapper.find('.view')).toHaveLength(1);
     wrapper.unmount();
 });

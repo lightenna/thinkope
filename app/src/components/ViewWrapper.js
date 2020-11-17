@@ -39,13 +39,7 @@ class ViewWrapper extends React.Component {
         return default_view;
     };
 
-    render_specialised_view(type, view, key, datasource, path, subviews) {
-        const data = {
-            'path': path,
-            'datasource': datasource
-        };
-        // @todo load data
-        data.jlol = [];
+    render_specialised_view(type, view, data, subviews, key) {
         // use type to instantiate correct view type
         switch (type) {
             case 'container' :
@@ -60,10 +54,10 @@ class ViewWrapper extends React.Component {
         }
     };
 
-    render_view(view, key, datasource, path) {
-        const subviews = (view.sub || []).map((subview, i) => this.render_view(subview, i, datasource, path));
+    render_view_recursive(view, data, key) {
+        const subviews = (view.sub || []).map((subview, i) => this.render_view_recursive(subview, data, i));
         const type = view.type || 'editor';
-        return this.render_specialised_view(type, ...arguments, subviews);
+        return this.render_specialised_view(type, view, data, subviews, key);
     };
 
     render() {
@@ -73,7 +67,20 @@ class ViewWrapper extends React.Component {
         const view = this.getView(query);
         const datasource = params.datasource || default_datasource;
         const path = '/' + (params.path || "");
-        return this.render_view(view, 0, datasource, path);
+        const data = {
+            'path': path,
+            'datasource': datasource
+        };
+        // @todo load data
+        data.jlol = [];
+        return this.render_view_recursive(view, data, 0);
+    }
+
+    static get propTypes() {
+        return {
+            match: PropTypes.object.isRequired,
+            location: PropTypes.object.isRequired
+        };
     }
 }
 
