@@ -47,3 +47,36 @@ type: "techdoc"
 
 ### View optimisation
 + Views can be server-side rendered (SSR)
+
+### Focus
++ A single view can have the focus (caret) at any one time
+    + Keystrokes are fed to that view
+    + Multiple views can be impacted by those keystrokes
+        + Impacted views are probably read-only
++ The view with focus (VWIF) is read/write
+    + all views without focus (VWOF) are read-only
++ However all VWOF might also be viewed by someone[else] somewhere[else]
+    + or just me in another tab/browser window/on another device
+    + therefore all VWOFs could get receive changes
+        + which could then cascade through other views
++ Two types of change
+    + Local changes
+        + User click/drag/pinch in any view
+        + User keystroke in a VWIF
+        + Computer produces output as part of local execution
+    + Network changes
+        + Received by ViewWrapper
+            + propagated through all affected views
+
+### Markdown
++ Editor view allows you to edit text, simply as text
+    + only text
+    + no buttons
+    + simple raw code
+        + but maybe with suggestions
+            + code
+            + spelling corrections
+            + uppercasing
++ Markdown editor view allows you to edit rendered markdown
+    + add UI buttons for bold/italic/list etc.
+https://github.com/withspectrum/draft-js-markdown-plugin

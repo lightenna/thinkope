@@ -4,9 +4,16 @@ type: "task"
 state: "active"
 ---
 
-### embed editor view
+### embed editor view [parent](user-story/user-can-view-a-thinkope)
 + redux based
-+ [DraftJS](https://draftjs.org/)
++ start with [DraftJS](https://draftjs.org/)
++ capture and propagate update
+    + aim to push up to ViewWrapper and down to other views
+        + including another DraftJS editor view
+        + may better link them in the future, but maintain view independence for now
++ focus on the Redux implications of multiple DraftJS editors
+    + get two DraftJS editors paired
+        + such that typing in one appears in the other
 
 ### resize container view by dragging boundary [parent](user-story/user-can-view-a-thinkope)
 + [ ] get container view to show a line separating the contained views

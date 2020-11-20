@@ -39,6 +39,9 @@ state: "new"
         + stick with K8s cluster
             + ingress controller to route between the different services
 
+### add search and replace functionality to Editor views
+https://reactrocket.com/post/draft-js-search-and-replace/
+
 ### create javascript to replace empty links with page thumbnails
 
 ### refactor theme files out into a new remote theme
