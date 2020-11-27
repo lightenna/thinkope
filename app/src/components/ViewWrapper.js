@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from "react-router";
+import {withRouter} from "react-router";
 import qs from 'qs';
 import GenericLazyLoad from './GenericLazyLoad';
 // directly loaded views
@@ -7,7 +7,7 @@ import TestView from './views/TestView';
 import ContainerView from './views/ContainerView';
 import PropTypes from "prop-types";
 // lazy-loaded views
-const EditorView = React.lazy(() => import('./views/EditorView'));
+const EditorView = React.lazy(() => import('../features/editor/EditorView'));
 
 const default_datasource = 'local';
 const default_view = {
@@ -43,14 +43,14 @@ class ViewWrapper extends React.Component {
         // use type to instantiate correct view type
         switch (type) {
             case 'container' :
-                const container_view = <ContainerView view={view} key={key} data={data} sub={subviews} />;
+                const container_view = <ContainerView view={view} key={key} data={data} sub={subviews}/>;
                 return <GenericLazyLoad target={container_view} detectIfLazy={ContainerView}/>;
             case 'editor' :
-                const editor_view = <EditorView view={view} key={key} data={data} sub={subviews} />;
+                const editor_view = <EditorView view={view} key={key} data={data} sub={subviews}/>;
                 return <GenericLazyLoad target={editor_view} detectIfLazy={EditorView}/>;
             case 'test' :
             default :
-                return <TestView view={view} key={key} data={data} sub={subviews} />;
+                return <TestView view={view} key={key} data={data} sub={subviews}/>;
         }
     };
 

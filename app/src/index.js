@@ -7,6 +7,8 @@ import {Provider} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import {ConnectedRouter} from 'connected-react-router';
 
+import EditorView from "./features/editor/EditorView";
+
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>

@@ -25,7 +25,7 @@ state: "new"
     + [ ] service spins up within constrained scope
         + should not have access to whole filesystem
     + [ ] request includes relative path filename
-    + [ ] response returns JLOL as JSON
+    + [ ] response returns JLOB as JSON
         + does not need to be highly-featured; simplest thing for now
 
 ### create first remote microservices
@@ -58,4 +58,9 @@ https://reactrocket.com/post/draft-js-search-and-replace/
     + set title
     + set meta tags
 [react-helmet](https://www.npmjs.com/package/react-helmet)
+
+### integrate Jupyter as another editor view
++ [Jupyter Notebook](https://jupyter.org/)
++ use [MyBinder](https://mybinder.readthedocs.io/en/latest/)
+    + for docker-based run-time execution of Notebooks
 

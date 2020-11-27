@@ -5,6 +5,68 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
+### evaluate JLOL to JLOB
++ consider changing lines to blocks
+    + consistent with Jupyter and Draft block-based format
+```
+{
+    "cells": [],
+    "nbformat": 4,
+    "nbformat_minor": 2
+}
+```
+    + [example of Jupyter notebook JSON](https://raw.githubusercontent.com/DB2-Samples/db2jupyter/master/Db2%20Jupyter%20Macros.ipynb)
++ don't get too caught up on the output syntax
+    + let's put it through a translation layer
+        + Internal state -> (serializer) e.g. simple text string/DraftJS editorState -> Views
+        + Internal state -> (format translator) e.g. Markdown/Jupyter JSON -> Files
+    + Each views has _partial_ coverage over internal state
+    + Internal state has total coverage over 1 or more files
+
+### look at editors for views [parent](task/embed-editor-view)
++ Beware that state updates could trigger a lot of re-rendering
++ Evaluate multiple editors
+    + [DraftJS]() which is the basis for
+        + [React RTE](https://github.com/sstur/react-rte)
+    + [codemirror](https://codemirror.net/)
+    + [Slate](https://docs.slatejs.org/)
+    + [Quill](http://quilljs.com/)
+    + [Prosemirror](https://prosemirror.net/)
++ probably want to allow them all as views
+    + means pairing each back to a whole-state object stored in Redux
+    + that's going to create re-rendering issues
++ that means creating a common editor format
+    + keep it simple, lean on the text
+        + all these editors ultimately edit text
+        + the richer they get, the more annotations
+            + just need to standardise the annotations
+        + git's approach is a good guide
+            + think about every edit as a diff
+            + lines are affected
+        + edit = diff
+            + diff to work out what changed (the diff)
+            + patch to apply change (diff) to unpatched code
+                + will need to keep microversions
+                + which means there needs to be some kind of authoritative source
+                    + probably treat remote as authoritative source
+                        + handle conflicts like git
+        + use find and replace as a model
+            + we're patching
+    + nice not to lose the editor's native object
+        + could maybe store that too
+            + at least locally
+        + updates to linked editors are made using a cascade
+            + diff object (if available, else)
+            + full object (if available, else)
+            + diff text (if available, else)
+            + full text
+        - too editor-specific, will never scale
+            + revert to underlying text
++ interesting model is NoteDB using by Google in [Gerrit](https://www.gerritcodereview.com/)
++ [X] understand what the data structure for a patch typically looks like
+    + want to use a relatively standard patch format
++ maybe [JSONPatch](http://jsonpatch.com/)
+
 ### create container view [parent](user-story/user-can-view-a-thinkope)
 + acceptance criteria
     + [X] contains nested 1 or more sub-views
