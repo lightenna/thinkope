@@ -2,12 +2,13 @@ import React from 'react';
 import {withRouter} from "react-router";
 import qs from 'qs';
 import GenericLazyLoad from './GenericLazyLoad';
-// directly loaded views
-import TestView from './views/TestView';
-import ContainerView from './views/ContainerView';
 import PropTypes from "prop-types";
+// directly loaded views
+import TestEditor from '../features/editor/components/TestEditor';
+import ContainerView from './views/ContainerView';
+import {default as editorStateWrap} from '../features/editor/editorStateWrap';
 // lazy-loaded views
-const EditorView = React.lazy(() => import('../features/editor/EditorView'));
+const DefaultEditor = React.lazy(() => import('../features/editor/components/DefaultEditor'));
 
 const default_datasource = 'local';
 const default_view = {
@@ -46,11 +47,13 @@ class ViewWrapper extends React.Component {
                 const container_view = <ContainerView view={view} key={key} data={data} sub={subviews}/>;
                 return <GenericLazyLoad target={container_view} detectIfLazy={ContainerView}/>;
             case 'editor' :
-                const editor_view = <EditorView view={view} key={key} data={data} sub={subviews}/>;
-                return <GenericLazyLoad target={editor_view} detectIfLazy={EditorView}/>;
+                const ConnectedDefaultEditor = editorStateWrap(DefaultEditor);
+                const editor_view = <ConnectedDefaultEditor view={view} key={key} data={data} sub={subviews}/>;
+                return <GenericLazyLoad target={editor_view} detectIfLazy={DefaultEditor}/>;
             case 'test' :
             default :
-                return <TestView view={view} key={key} data={data} sub={subviews}/>;
+                const ConnectedTestEditor = editorStateWrap(TestEditor);
+                return <ConnectedTestEditor view={view} key={key} data={data} sub={subviews}/>;
         }
     };
 
@@ -71,8 +74,6 @@ class ViewWrapper extends React.Component {
             'path': path,
             'datasource': datasource
         };
-        // @todo load data
-        data.jlol = [];
         return this.render_view_recursive(view, data, 0);
     }
 

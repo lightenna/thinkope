@@ -4,52 +4,24 @@ type: "task"
 state: "active"
 ---
 
-### embed editor view [parent](user-story/user-can-view-a-thinkope)
-+ redux based
-+ start with [DraftJS](https://draftjs.org/)
-+ capture and propagate update
-    + aim to push up to ViewWrapper and down to other views
-        + including another DraftJS editor view
-        + may better link them in the future, but maintain view independence for now
-+ focus on the Redux implications of multiple DraftJS editors
-    + get two DraftJS editors paired
-        + such that typing in one appears in the other
-+ [X] structure app properly
-    + [X] set up simple reducer
-    + understand features, reducers, actions, components
-        + package reducers and actions in slices [ref](https://redux.js.org/tutorials/essentials/part-2-app-structure)
-    + internal (Redux) store
-        + JLOB
-        + list of patches in order
-            + all applied
-        + think about patch life cycle
-            + new
-            + applied (to local working copy/Redux store)
-            + committed (to local repo)
-            + pushed (to remote)
-+ [ ] save editor text into the store
-    + [ref](https://redux.js.org/tutorials/essentials/part-2-app-structure)
-    + pass in editorState
-        - current undefined
-    + look at how others have integrated React, Redux and text editors
-        + [Krispel-Samsel](https://reactrocket.com/post/draft-js-and-redux/)
-        + [Karpov](https://thinkster.io/tutorials/react-redux-markdown-editor)
-        + [Mahoney](https://medium.com/@siobhanpmahoney/building-a-rich-text-editor-with-react-and-draft-js-part-3-persisting-rich-text-data-to-server-b298540ba8d8)
-    + try to store the unserializable state in Redux first
-        + [even though it's the old way](https://stackoverflow.com/questions/61704805/getting-an-error-a-non-serializable-value-was-detected-in-the-state-when-using)
-        + then we can work out how to do the next bit
-            - turns out that's not the root of the EditorState undefined problem
-    + [ ] revert to using configureStore() with serializable objects
-    + look at [Redux Draft](https://github.com/gocreating/redux-draft)
-        + npm install and test
+### switch from whole-text to patches [parent](user-story/user-can-view-a-thinkope)
++ currently passing whole-text
+    - which slows dramatically as text length increases
+    + because it creates a lot of re-rendering and string parsing
 + [ ] create patch on input event
     + patch passed through to all other components
     + work out how to diff
 + [ ] save editor text into the store using patches
 
-### ingest data from local source
+### apply focus to first 'focusable' view in container [parent](user-story/user-can-view-a-thinkope)
++ probably a depth-first search across all containers
+    + until we find a focusable view
+
+### test two editor views side-by-side [parent](user-story/user-can-view-a-thinkope)
+
+### ingest data from local source [parent](user-story/user-can-view-a-thinkope)
 + load as JLOB
-+ pass to editor on init
++ pass to Redux (internal state) on init
     + [draftJS how to init](https://stackoverflow.com/questions/35884112/draftjs-how-to-initiate-an-editor-with-content)
 
 ### resize container view by dragging boundary [parent](user-story/user-can-view-a-thinkope)

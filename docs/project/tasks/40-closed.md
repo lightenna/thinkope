@@ -5,6 +5,72 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
+### embed editor view [parent](user-story/user-can-view-a-thinkope)
++ redux based
++ start with [DraftJS](https://draftjs.org/)
++ capture and propagate update
+    + aim to push up to ViewWrapper and down to other views
+        + including another DraftJS editor view
+        + may better link them in the future, but maintain view independence for now
++ focus on the Redux implications of multiple DraftJS editors
+    + get two DraftJS editors paired
+        + such that typing in one appears in the other
++ [X] structure app properly
+    + [X] set up simple reducer
+    + understand features, reducers, actions, components
+        + package reducers and actions in slices [ref](https://redux.js.org/tutorials/essentials/part-2-app-structure)
+    + internal (Redux) store
+        + JLOB
+        + list of patches in order
+            + all applied
+        + think about patch life cycle
+            + new
+            + applied (to local working copy/Redux store)
+            + committed (to local repo)
+            + pushed (to remote)
++ [X] save editor text into the store
+    + [ref](https://redux.js.org/tutorials/essentials/part-2-app-structure)
+    + pass in editorState
+        - current undefined
+    + look at how others have integrated React, Redux and text editors
+        + [Krispel-Samsel](https://reactrocket.com/post/draft-js-and-redux/)
+        + [Karpov](https://thinkster.io/tutorials/react-redux-markdown-editor)
+        + [Mahoney](https://medium.com/@siobhanpmahoney/building-a-rich-text-editor-with-react-and-draft-js-part-3-persisting-rich-text-data-to-server-b298540ba8d8)
+    + try to store the unserializable state in Redux first
+        + [even though it's the old way](https://stackoverflow.com/questions/61704805/getting-an-error-a-non-serializable-value-was-detected-in-the-state-when-using)
+        + then we can work out how to do the next bit
+            - turns out that's not the root of the EditorState undefined problem
+    + look at [Redux Draft](https://github.com/gocreating/redux-draft)
+        + [X] npm install and test
+        + [X] sync edits (as whole-text) to store using reducer
+            + internalise the code and refactor to make changes
+        + [X] send edits (as whole-text) to another view
+        + [X] address React 16.x warning
+            + remove [legacy API](https://reactjs.org/docs/legacy-context.html)
+            + could replace with Context API if needed in the future
+                + new [context API](https://reactjs.org/docs/context.html)
++ [X] add a raw view
+    + visualise the internal data structure as making editor changes
+        + will make debugging easier
++ [X] store raw object (JLOB) in Redux, not editorState
+    + need to store serializable objects
+  > rethought, better to serialise whole editorState if possible
+  + re-rethought, go back to independent editors
+  + with only a synchronised rawState object between them
+    + strip everything right back
+        + put editorState in the EditorView, not in Redux
++ [X] sync two editors properly
+    + using full editorState
+    + [great article on updating editors in realtime](https://caffeinecoding.com/react-redux-draftjs/)
+        + probably going to need to try a bunch of editors
+    - looks like they won't sync with the same shared editorState object in redux
+        + [multiple editors with multiple EditorState objects](https://github.com/draft-js-plugins/draft-js-plugins/blob/master/FAQ.md)
+        + persevere with rawState object in Redux
++ [X] revert to using toolkit-configureStore()
+    + instead of older createStore()
++ [X] recode editorSlice as a proper slice
++ [X] add TestEditor tests
+
 ### evaluate JLOL to JLOB
 + consider changing lines to blocks
     + consistent with Jupyter and Draft block-based format
@@ -32,6 +98,7 @@ sort: "newly completed at top"
     + [Slate](https://docs.slatejs.org/)
     + [Quill](http://quilljs.com/)
     + [Prosemirror](https://prosemirror.net/)
+    + ...[excellent 15 'best' list](https://ourcodeworld.com/articles/read/1065/top-15-best-rich-text-editor-components-wysiwyg-for-reactjs)
 + probably want to allow them all as views
     + means pairing each back to a whole-state object stored in Redux
     + that's going to create re-rendering issues

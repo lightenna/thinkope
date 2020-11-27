@@ -1,20 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {convertToRaw} from 'draft-js';
 
-class TestView extends React.Component {
+class TestEditor extends React.Component {
     render() {
         const data = this.props.data || {
             path: 'notdefined',
             datasource: 'notdefined'
         };
+        const contentState = this.props.editorState.getCurrentContent();
+        const rawEditorState = convertToRaw(contentState);
         return (
             <div className={"view type-test"}>
-                <h1>Test View</h1>
+                <h1>Test Editor</h1>
                 <ul>
                     <li>I am a view of {data.path}</li>
                     <li>I am a view from {data.datasource}</li>
                     <li>I am visualised using the `{this.props.view.type}` view</li>
                 </ul>
+                <pre>
+                {JSON.stringify(rawEditorState, null, 2)}
+                </pre>
             </div>
         );
     }
@@ -27,4 +33,4 @@ class TestView extends React.Component {
     }
 }
 
-export default TestView;
+export default TestEditor;

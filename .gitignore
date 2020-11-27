@@ -13,6 +13,7 @@
 
 # misc
 .DS_Store
+.eslintcache
 
 # env
 .env
@@ -35,6 +36,9 @@ yarn-error.log*
 # jekyll
 Gemfile.lock
 docs/_site
+
+# old/deprecated code
+deprecated/*
 
 # secrets
 **/excluded-*
