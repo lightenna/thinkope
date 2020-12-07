@@ -9,10 +9,6 @@ state: "new"
 + simple view
 + takes JSON data and renders to DOM
 
-### produce mock JSON data
-+ static example to feed initial view development
-    + will also help with testing
-
 ### create local file service [parent](user-story/user-can-view-a-thinkope)
 + read file from local source
     + Node.js microservice
@@ -72,4 +68,3 @@ https://reactrocket.com/post/draft-js-search-and-replace/
   + patch passed through to all other components
   + work out how to diff
 + [ ] save editor text into the store using patches
-

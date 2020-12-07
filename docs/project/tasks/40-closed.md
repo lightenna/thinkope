@@ -5,6 +5,46 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
+### research loading data from first source [parent](user-story/user-can-view-a-thinkope)
++ pass to Redux (internal state) on init
+    + [draftJS how to init](https://stackoverflow.com/questions/35884112/draftjs-how-to-initiate-an-editor-with-content)
++ identify ingest location
+    + really it's got nothing to do with the editors
+    + it's central, the redux store/editored slice
+    + but it's based on URL and we only parse that out in ViewWrapper
++ [X] stub out with simple hard-coded text
++ [X] fix "cannot update" bug
+    + clicking dispatches event, but does not set caret
+  > moved to single editorStateWrap around entire ViewWrapper
+    + makes sense because we've got
+        + a single redux store
+        + single reducer
+        + multiple views dispatching events
++ design load op
+    + currently just loading text
+        + need to load from a web service
+        + suggest node express
+            + serve app (built)
+            + field requests
+                + simple node file server [serve-static](http://expressjs.com/en/resources/middleware/serve-static.html)
+    + local isn't obvious
+        + but it's straight-forward for a developer's first-use experience
+            + start thinkope/app, start local node express app, play with local files
+        + probably want to make it align to the @github datasource operations
+            + we can use rest calls directly into that
+                + might be worth coding that first
+                    + /repos/:owner/:repo/contents/:path
+                        + [api request for metadata about file](https://api.github.com/repos/lightenna/thinkope/contents/README.md)
+                            + includes download link for file
+                        + [http link to file](https://raw.githubusercontent.com/lightenna/thinkope/develop/README.md)
+                            + or API request 'github' link for base64-encoded content
+                        + [github link](https://api.github.com/repos/lightenna/thinkope/git/blobs/ab936d52ff60645a99f9d97cf6687c2fda47444a)
+      > do @github datasource first
+
+### produce mock JSON data
++ static example to feed initial view development
+    + will also help with testing
+
 ### test two editor views side-by-side [parent](user-story/user-can-view-a-thinkope)
 + sync works with two isolated EditorState objects
 
