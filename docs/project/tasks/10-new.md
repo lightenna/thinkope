@@ -25,7 +25,7 @@ state: "new"
     + [ ] service spins up within constrained scope
         + should not have access to whole filesystem
     + [ ] request includes relative path filename
-    + [ ] response returns JLOL as JSON
+    + [ ] response returns JLOB as JSON
         + does not need to be highly-featured; simplest thing for now
 
 ### create first remote microservices
@@ -38,6 +38,9 @@ state: "new"
     + provisioned separately using K8s / Helm chart
         + stick with K8s cluster
             + ingress controller to route between the different services
+
+### add search and replace functionality to Editor views
+https://reactrocket.com/post/draft-js-search-and-replace/
 
 ### create javascript to replace empty links with page thumbnails
 
@@ -55,4 +58,18 @@ state: "new"
     + set title
     + set meta tags
 [react-helmet](https://www.npmjs.com/package/react-helmet)
+
+### integrate Jupyter as another editor view
++ [Jupyter Notebook](https://jupyter.org/)
++ use [MyBinder](https://mybinder.readthedocs.io/en/latest/)
+    + for docker-based run-time execution of Notebooks
+
+### switch from whole-text to patches [parent](user-story/user-can-view-a-thinkope)
++ currently passing whole-text
+  - which slows dramatically as text length increases
+  + because it creates a lot of re-rendering and string parsing
++ [ ] create patch on input event
+  + patch passed through to all other components
+  + work out how to diff
++ [ ] save editor text into the store using patches
 

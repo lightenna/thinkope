@@ -5,6 +5,169 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
+### test two editor views side-by-side [parent](user-story/user-can-view-a-thinkope)
++ sync works with two isolated EditorState objects
+
+### embed editor view [parent](user-story/user-can-view-a-thinkope)
++ redux based
++ start with [DraftJS](https://draftjs.org/)
++ capture and propagate update
+    + aim to push up to ViewWrapper and down to other views
+        + including another DraftJS editor view
+        + may better link them in the future, but maintain view independence for now
++ focus on the Redux implications of multiple DraftJS editors
+    + get two DraftJS editors paired
+        + such that typing in one appears in the other
++ [X] structure app properly
+    + [X] set up simple reducer
+    + understand features, reducers, actions, components
+        + package reducers and actions in slices [ref](https://redux.js.org/tutorials/essentials/part-2-app-structure)
+    + internal (Redux) store
+        + JLOB
+        + list of patches in order
+            + all applied
+        + think about patch life cycle
+            + new
+            + applied (to local working copy/Redux store)
+            + committed (to local repo)
+            + pushed (to remote)
++ [X] save editor text into the store
+    + [ref](https://redux.js.org/tutorials/essentials/part-2-app-structure)
+    + pass in editorState
+        - current undefined
+    + look at how others have integrated React, Redux and text editors
+        + [Krispel-Samsel](https://reactrocket.com/post/draft-js-and-redux/)
+        + [Karpov](https://thinkster.io/tutorials/react-redux-markdown-editor)
+        + [Mahoney](https://medium.com/@siobhanpmahoney/building-a-rich-text-editor-with-react-and-draft-js-part-3-persisting-rich-text-data-to-server-b298540ba8d8)
+    + try to store the unserializable state in Redux first
+        + [even though it's the old way](https://stackoverflow.com/questions/61704805/getting-an-error-a-non-serializable-value-was-detected-in-the-state-when-using)
+        + then we can work out how to do the next bit
+            - turns out that's not the root of the EditorState undefined problem
+    + look at [Redux Draft](https://github.com/gocreating/redux-draft)
+        + [X] npm install and test
+        + [X] sync edits (as whole-text) to store using reducer
+            + internalise the code and refactor to make changes
+        + [X] send edits (as whole-text) to another view
+        + [X] address React 16.x warning
+            + remove [legacy API](https://reactjs.org/docs/legacy-context.html)
+            + could replace with Context API if needed in the future
+                + new [context API](https://reactjs.org/docs/context.html)
++ [X] add a raw view
+    + visualise the internal data structure as making editor changes
+        + will make debugging easier
++ [X] store raw object (JLOB) in Redux, not editorState
+    + need to store serializable objects
+  > rethought, better to serialise whole editorState if possible
+  + re-rethought, go back to independent editors
+  + with only a synchronised rawState object between them
+    + strip everything right back
+        + put editorState in the EditorView, not in Redux
++ [X] sync two editors properly
+    + using full editorState
+    + [great article on updating editors in realtime](https://caffeinecoding.com/react-redux-draftjs/)
+        + probably going to need to try a bunch of editors
+    - looks like they won't sync with the same shared editorState object in redux
+        + [multiple editors with multiple EditorState objects](https://github.com/draft-js-plugins/draft-js-plugins/blob/master/FAQ.md)
+        + persevere with rawState object in Redux
++ [X] revert to using toolkit-configureStore()
+    + instead of older createStore()
++ [X] recode editorSlice as a proper slice
++ [X] add TestEditor tests
+
+### evaluate JLOL to JLOB
++ consider changing lines to blocks
+    + consistent with Jupyter and Draft block-based format
+```
+{
+    "cells": [],
+    "nbformat": 4,
+    "nbformat_minor": 2
+}
+```
+    + [example of Jupyter notebook JSON](https://raw.githubusercontent.com/DB2-Samples/db2jupyter/master/Db2%20Jupyter%20Macros.ipynb)
++ don't get too caught up on the output syntax
+    + let's put it through a translation layer
+        + Internal state -> (serializer) e.g. simple text string/DraftJS editorState -> Views
+        + Internal state -> (format translator) e.g. Markdown/Jupyter JSON -> Files
+    + Each views has _partial_ coverage over internal state
+    + Internal state has total coverage over 1 or more files
+
+### look at editors for views [parent](task/embed-editor-view)
++ Beware that state updates could trigger a lot of re-rendering
++ Evaluate multiple editors
+    + [DraftJS]() which is the basis for
+        + [React RTE](https://github.com/sstur/react-rte)
+    + [codemirror](https://codemirror.net/)
+    + [Slate](https://docs.slatejs.org/)
+    + [Quill](http://quilljs.com/)
+    + [Prosemirror](https://prosemirror.net/)
+    + ...[excellent 15 'best' list](https://ourcodeworld.com/articles/read/1065/top-15-best-rich-text-editor-components-wysiwyg-for-reactjs)
++ probably want to allow them all as views
+    + means pairing each back to a whole-state object stored in Redux
+    + that's going to create re-rendering issues
++ that means creating a common editor format
+    + keep it simple, lean on the text
+        + all these editors ultimately edit text
+        + the richer they get, the more annotations
+            + just need to standardise the annotations
+        + git's approach is a good guide
+            + think about every edit as a diff
+            + lines are affected
+        + edit = diff
+            + diff to work out what changed (the diff)
+            + patch to apply change (diff) to unpatched code
+                + will need to keep microversions
+                + which means there needs to be some kind of authoritative source
+                    + probably treat remote as authoritative source
+                        + handle conflicts like git
+        + use find and replace as a model
+            + we're patching
+    + nice not to lose the editor's native object
+        + could maybe store that too
+            + at least locally
+        + updates to linked editors are made using a cascade
+            + diff object (if available, else)
+            + full object (if available, else)
+            + diff text (if available, else)
+            + full text
+        - too editor-specific, will never scale
+            + revert to underlying text
++ interesting model is NoteDB using by Google in [Gerrit](https://www.gerritcodereview.com/)
++ [X] understand what the data structure for a patch typically looks like
+    + want to use a relatively standard patch format
++ maybe [JSONPatch](http://jsonpatch.com/)
+
+### create container view [parent](user-story/user-can-view-a-thinkope)
++ acceptance criteria
+    + [X] contains nested 1 or more sub-views
+    + [X] allows proportional screen splitting
+    + [X] passes down URL-based view information to sub-views
+    + supports SSR - delay for now
++ [X] pass view state into view as prop
+    + sourced from URL
+    + [test](http://localhost:3000/@something/two/three?view={%22type%22:%22fish%22,%22x%22:0.00002345,%22y%22:0.000006789,%22w%22:1.0,%22h%22:0.05})
+        + [X] add to unit tests
++ [X] process nested children
+    + ViewWrapper pulls out the children
+        + instantiates ViewWrappers for each of them
+    + [test](http://localhost:3000/@something/two/three?view={%22type%22:%22container%22,%22orient%22:%22horiz%22,%22split%22:35.0,%22sub%22:[{%22type%22:%22fish%22},{%22type%22:%22fish%22}]})
+        + [X] add to unit tests
++ [X] create container view
+    + initially just a single a:b split
+        + but do as an array to be forward looking
+        + could change to a:b:c for a:b:c...y:z split in the future
++ [X] migrate tests back to Enzyme
+    + need to get them all working
++ [X] split out tests for lazy-loaded components
+    + just test them as isolated components
+        + Enzyme doesn't cope well with trying to lazy-load them from the parent component
++ [X] instantiate editor view (lazy loaded)
+    + set up Enzyme test
+    + leave editor blank for now
++ [X] refactor views to require data rather than datasource/path
+
+### fix missing manifest.json for packaged docsapp
+
 ### stop flash of 'Page not found' [parent](user-story/user-can-view-a-thinkope)
 
 ### migrate away from Slingshot [parent](user-story/user-can-view-a-thinkope)
