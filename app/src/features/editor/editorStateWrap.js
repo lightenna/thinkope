@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {EditorState, convertToRaw, convertFromRaw} from "draft-js";
-import {update} from "./editorStateSlice";
+import {update, updateRaw} from "./editorStateSlice";
 
 const editorStateWrap = (WrappedComponent) => {
     class InnerEditorWrapper extends Component {
@@ -16,8 +16,6 @@ const editorStateWrap = (WrappedComponent) => {
         return {
             editorState: EditorState.createWithContent(convertFromRaw(raw_object))
         };
-        // const editorState = EditorState.createEmpty();
-        // return { editorState };
     };
 
     const mapDispatchToProps = (dispatch, ownProps) => {
@@ -26,7 +24,11 @@ const editorStateWrap = (WrappedComponent) => {
                 const contentState = editorState.getCurrentContent();
                 return dispatch(update(convertToRaw(contentState)));
             },
-            reload: () => dispatch({ type: 'RELOAD' })
+            updateEditorRawText: (raw_text) => {
+                const editorState = EditorState.createWithText(raw_text);
+                const contentState = editorState.getCurrentContent();
+                return dispatch(update(convertToRaw(contentState)));
+            },
         }
     };
 

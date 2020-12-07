@@ -5,6 +5,9 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
+### test two editor views side-by-side [parent](user-story/user-can-view-a-thinkope)
++ sync works with two isolated EditorState objects
+
 ### embed editor view [parent](user-story/user-can-view-a-thinkope)
 + redux based
 + start with [DraftJS](https://draftjs.org/)

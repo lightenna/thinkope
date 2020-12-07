@@ -64,3 +64,12 @@ https://reactrocket.com/post/draft-js-search-and-replace/
 + use [MyBinder](https://mybinder.readthedocs.io/en/latest/)
     + for docker-based run-time execution of Notebooks
 
+### switch from whole-text to patches [parent](user-story/user-can-view-a-thinkope)
++ currently passing whole-text
+  - which slows dramatically as text length increases
+  + because it creates a lot of re-rendering and string parsing
++ [ ] create patch on input event
+  + patch passed through to all other components
+  + work out how to diff
++ [ ] save editor text into the store using patches
+

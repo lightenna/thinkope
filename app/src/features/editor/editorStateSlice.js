@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {EditorState, convertToRaw} from 'draft-js';
 
-const getDefaultState = () => {
+const getEmptyState = () => {
     const editorState = EditorState.createEmpty();
     const contentState = editorState.getCurrentContent();
     return convertToRaw(contentState);
@@ -10,16 +10,14 @@ const getDefaultState = () => {
 export const editorStateSlice = createSlice({
     name: 'editor',
     initialState: {
-        // @todo load actual data
-        jlob: getDefaultState(),
+        jlob: getEmptyState(),
     },
     reducers: {
         update: (state, action) => {
-            const {payload} = action;
-            // console.log('redux action: ', type, payload);
+            console.log('redux action: ', action.type, action.payload);
             return {
                 ...state,
-                jlob: payload,
+                jlob: action.payload,
             };
         },
     },
