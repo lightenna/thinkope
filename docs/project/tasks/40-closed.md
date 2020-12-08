@@ -185,12 +185,12 @@ sort: "newly completed at top"
     + supports SSR - delay for now
 + [X] pass view state into view as prop
     + sourced from URL
-    + [test](http://localhost:3000/@something/two/three?view={%22type%22:%22fish%22,%22x%22:0.00002345,%22y%22:0.000006789,%22w%22:1.0,%22h%22:0.05})
+    + [test](http://localhost:3000/@something/two/three?view={"type":"fish","x":0.00002345,"y":0.000006789,"w":1.0,"h":0.05})
         + [X] add to unit tests
 + [X] process nested children
     + ViewWrapper pulls out the children
         + instantiates ViewWrappers for each of them
-    + [test](http://localhost:3000/@something/two/three?view={%22type%22:%22container%22,%22orient%22:%22horiz%22,%22split%22:35.0,%22sub%22:[{%22type%22:%22fish%22},{%22type%22:%22fish%22}]})
+    + [test](http://localhost:3000/@something/two/three?view={"type":"container","orient":"horiz","split":35.0,"sub":[{"type":"fish"},{"type":"fish"}]})
         + [X] add to unit tests
 + [X] create container view
     + initially just a single a:b split
