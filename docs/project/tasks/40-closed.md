@@ -5,6 +5,13 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
+### set up @github datasource [parent](user-story/user-can-view-a-thinkope)
++ pre-bake credentials for URL
+    + [base](https://api.github.com/)
++ add whitelist of query parameters
+    + then pass on those params in the request
+        + e.g. ref (for specifying the branch)
+
 ### research loading data from first source [parent](user-story/user-can-view-a-thinkope)
 + pass to Redux (internal state) on init
     + [draftJS how to init](https://stackoverflow.com/questions/35884112/draftjs-how-to-initiate-an-editor-with-content)

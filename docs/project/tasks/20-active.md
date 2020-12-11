@@ -4,18 +4,8 @@ type: "task"
 state: "active"
 ---
 
-### set up @github datasource
-+ pre-bake credentials for URL
-    + [base](https://api.github.com/)
-+ add whitelist of query parameters
-    + then pass on those params in the request
-        + e.g. ref (for specifying the branch)
-
-### ingest data from Github API
-+ start with [task list](https://api.github.com/repos/lightenna/thinkope/contents/docs/project/tasks/20-active.md)
-    + pull metadata, then pull and decode content
-+ thinkope path
-    + /@github/repos/lightenna/thinkope/contents/docs/project/tasks/20-active.md?ref=develop
+### cook up some kind of exception handling and reporting [parent](user-story/user-can-view-a-thinkope)
++ throw exception on bad datasource
 
 ### apply focus to first 'focusable' view in container [parent](user-story/user-can-view-a-thinkope)
 + probably a depth-first search across all containers

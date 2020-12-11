@@ -15,7 +15,6 @@ export const editorStateSlice = createSlice({
     },
     reducers: {
         update: (state, action) => {
-            console.log('redux action: ', action.type, action.payload);
             return {
                 ...state,
                 jlob: action.payload,

@@ -1,7 +1,7 @@
 import Wrapper from "../components/DataWrapper";
 import NotFoundPage from "../components/NotFoundPage";
 
-export const routes = [
+export const index = [
     {
         path: "/@:datasource/:path+",
         component: Wrapper,
