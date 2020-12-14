@@ -35,7 +35,10 @@ class DataWrapper extends React.Component {
     getAsyncErrorHandler() {
         var that = this;
         return (err) => {
-            console.log('getAsyncErrorHandler', err);
+            const env = process.env.NODE_ENV;
+            if (env && env !== 'test') {
+                console.log('getAsyncErrorHandler', err);
+            }
             that.setState((state, props) => {
                 throw new Error(err);
             });

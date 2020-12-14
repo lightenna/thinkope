@@ -13,7 +13,7 @@ class GenericErrorBoundary extends React.Component {
 
     componentDidCatch(error, info) {
         // can also log the error to an error reporting service
-        console.log(this.constructor.name, error, info);
+        // console.log(this.constructor.name, error, info);
     }
 
     render() {

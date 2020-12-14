@@ -23,6 +23,8 @@ test('data wrapper with empty params functions without error', async () => {
 test('data wrapper throws error when no such datasource', async () => {
     const datasource = "no-such-source";
     const path = "/path", querystr = "";
+    // silence console error reporting for this test
+    console.error = (err) => {};
     const {getByText} = render(
         <Provider store={store}>
             <DataLoadErrorBoundary>
