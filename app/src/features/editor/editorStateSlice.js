@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {EditorState, convertToRaw} from 'draft-js';
 
-const getEmptyState = () => {
+export const getEmptyState = () => {
     const editorState = EditorState.createEmpty();
     const contentState = editorState.getCurrentContent();
     return convertToRaw(contentState);

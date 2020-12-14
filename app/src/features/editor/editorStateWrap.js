@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {EditorState, convertToRaw, convertFromRaw} from "draft-js";
-import {update, updateRaw} from "./editorStateSlice";
+import {update} from "./editorStateSlice";
 
 const editorStateWrap = (WrappedComponent) => {
     class InnerEditorWrapper extends Component {
         render() {
-            return <WrappedComponent {...this.props} />;
+            // create editorState if not passed in props, in order to make this component unit testable
+            const editorState = this.props.editorState || EditorState.createEmpty();
+            return <WrappedComponent editorState={editorState} {...this.props} />;
         }
     }
 

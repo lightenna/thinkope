@@ -9,7 +9,7 @@ class TestEditor extends React.Component {
         const contentState = this.props.editorState.getCurrentContent();
         const rawEditorState = convertToRaw(contentState);
         return (
-            <div className={"view type-test"}>
+            <div className="test-editor">
                 <h1>Test Editor</h1>
                 <ul>
                     <li>I am a view of {path}</li>

@@ -13,13 +13,13 @@ class GenericErrorBoundary extends React.Component {
 
     componentDidCatch(error, info) {
         // can also log the error to an error reporting service
+        console.log(this.constructor.name, error, info);
     }
 
     render() {
         if (this.state.hasError) {
-            return <h1>Something went wrong indeed.</h1>;
+            return <h1 className="error">Something went wrong generically.</h1>;
         }
-
         return this.props.children;
     }
 }

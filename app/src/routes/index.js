@@ -1,18 +1,18 @@
-import Wrapper from "../components/DataWrapper";
+import RouteHandler from "../components/RouteHandler";
 import NotFoundPage from "../components/NotFoundPage";
 
 export const index = [
     {
         path: "/@:datasource/:path+",
-        component: Wrapper,
+        component: RouteHandler,
     },
     {
         path: "/:path+",
-        component: Wrapper,
+        component: RouteHandler,
     },
     {
         path: "/",
-        component: Wrapper,
+        component: RouteHandler,
     },
     {
         path: "**",

@@ -1,5 +1,5 @@
 import React from 'react';
-import GenericErrorBoundary from './GenericErrorBoundary';
+import LazyLoadErrorBoundary from './boundaries/LazyLoadErrorBoundary';
 
 class GenericLazyLoad extends React.Component {
 
@@ -11,11 +11,11 @@ class GenericLazyLoad extends React.Component {
         }
         // otherwise lazy-load
         return (
-            <GenericErrorBoundary>
+            <LazyLoadErrorBoundary>
                 <React.Suspense fallback={<div>Loading...</div>}>
                     {this.props.target}
                 </React.Suspense>
-            </GenericErrorBoundary>
+            </LazyLoadErrorBoundary>
         );
     }
 }

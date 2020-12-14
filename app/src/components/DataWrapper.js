@@ -6,7 +6,7 @@ import editorStateWrap from "../features/editor/editorStateWrap";
 import {find} from "../datasources/";
 import qs from "qs";
 
-const default_datasource = 'local';
+const default_datasource = undefined;
 
 class DataWrapper extends React.Component {
 
@@ -17,18 +17,35 @@ class DataWrapper extends React.Component {
         const datasource = params.datasource || default_datasource;
         const path = '/' + (params.path || "");
         const query = qs.parse(this.props.location.search, {ignoreQueryPrefix: true});
-        this.state = { metadata: {
-            'path': path,
-            'datasource': datasource,
-            'query': query,
-        }};
-        // load data to store
-        this.loadData();
+        this.state = {
+            metadata: {
+                'path': path,
+                'datasource': datasource,
+                'query': query,
+            },
+        };
+    }
+
+    componentDidMount() {
+        if (this.state.metadata.datasource) {
+            this.loadData();
+        }
+    }
+
+    getAsyncErrorHandler() {
+        var that = this;
+        return (err) => {
+            console.log('getAsyncErrorHandler', err);
+            that.setState((state, props) => {
+                throw new Error(err);
+            });
+        }
     }
 
     loadData() {
         const locmd = this.state.metadata;
-        const dsmetadata = find(locmd.datasource);
+        const error_handler = this.getAsyncErrorHandler();
+        const dsmetadata = find(locmd.datasource, error_handler);
         if (dsmetadata) {
             const req_url = dsmetadata.getUrl(locmd.path, locmd.query);
             dsmetadata.getData(req_url)
@@ -36,13 +53,18 @@ class DataWrapper extends React.Component {
                     this.props.updateEditorRawText(data);
                 })
                 .catch((err) => {
-                    // @todo throw bad data received exception
+                    error_handler(err);
                 });
         }
     }
 
     render() {
-        return <ViewWrapper location={this.props.location} metadata={this.state.metadata} {...this.props} />;
+        // include ...this.props to pass on store actions
+        return (
+            <div id="data-wrapper">
+                <ViewWrapper location={this.props.location} metadata={this.state.metadata} {...this.props} />
+            </div>
+        );
     }
 
     static get propTypes() {

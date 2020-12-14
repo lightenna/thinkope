@@ -1,56 +1,22 @@
-import github from "./github";
-const nodeFetch = require('node-fetch');
+import GithubDatasource from "./GithubDatasource";
+import TestDatasource from "./TestDatasource";
 
-const index = {
-    [github.key]: github,
-};
+const index = {};
+[ GithubDatasource, TestDatasource].map((source, i) => {
+    if (source.key) {
+        index[source.key] = source;
+    }
+});
 export default index;
 
 // abstract each storage and retrieval schema
-export const find = (key) => {
+export const find = (key, errorHandler) => {
     if (index[key]) {
-        // return each datasource as a Datasource object
-        return Object.assign(new Datasource(), index[key]);
+        // return each datasource as an instantiated Datasource object
+        return Object.assign(new index[key](), {
+            errorHandler: errorHandler,
+        });
     } else {
-        // @todo throw no_such_datasource exception
+        errorHandler(new Error('no such datasource'));
     }
 };
-
-// define a generic Datasource
-class Datasource {
-    getUrl(path, query) {
-        const whitelisted_query_string = this.param_whitelist.filter(function (item) {
-            return (query[item] !== undefined);
-        }).map((item) => {
-            return `${item}=${query[item]}`;
-        }).join('&');
-        return `${this.base}${path}?${whitelisted_query_string}`;
-    }
-
-    /**
-     * filterData placeholder
-     * Can be overridden by datasources to implement other filters
-     * @param data
-     * @return {Promise<unknown>}
-     */
-    filterData(data) {
-        // by default, don't filter the data at all
-        return Promise.resolve(data);
-    }
-
-    getData(url) {
-        if (url) {
-            return nodeFetch(url)
-                .then((response) => response.text())
-                .catch((err) => {
-                    // @todo throw fetch exception
-                })
-                .then((text) => this.filterData(text))
-                .catch((err) => {
-                    // @todo throw filter exception
-                });
-        } else {
-            // @todo throw exception
-        }
-    }
-}

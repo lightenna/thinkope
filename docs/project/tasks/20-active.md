@@ -4,8 +4,8 @@ type: "task"
 state: "active"
 ---
 
-### cook up some kind of exception handling and reporting [parent](user-story/user-can-view-a-thinkope)
-+ throw exception on bad datasource
+### address duplicate DataWrapper
++ looks like Router is double-calling the Wrapper
 
 ### apply focus to first 'focusable' view in container [parent](user-story/user-can-view-a-thinkope)
 + probably a depth-first search across all containers

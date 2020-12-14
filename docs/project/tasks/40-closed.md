@@ -5,6 +5,20 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
+### cook up some kind of exception handling and reporting [parent](user-story/user-can-view-a-thinkope)
++ throw exception on bad datasource
+    + use generically defined ErrorBoundaries
+        + don't worry about error overlay in dev (can 'X')
++ [X] fix test suite now exceptions being thrown
+    + [RTL waitFor](https://testing-library.com/docs/guide-disappearance/)
+    + [Enzyme createWaitForElement](https://www.npmjs.com/package/enzyme-wait)
+
+### create simple DefaultEditor for / route
++ will eventually need some kind of file loader
+    + organised by datasource
++ for now should just show simple text editor
+    + lets users write something...
+
 ### set up @github datasource [parent](user-story/user-can-view-a-thinkope)
 + pre-bake credentials for URL
     + [base](https://api.github.com/)
