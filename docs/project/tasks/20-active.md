@@ -4,7 +4,7 @@ type: "task"
 state: "active"
 ---
 
-### apply focus to first 'focusable' view in container [parent](user-story/user-can-view-a-thinkope)
+### apply focus to first 'focusable' view in container [parent](/project/user-stories/user-can-view-a-thinkope)
 + probably a depth-first search across all containers
     + until we find a focusable view
     + can always change out the search order later
@@ -35,7 +35,7 @@ state: "active"
         + by parsing the URL state and identifying that nothing has the focus yet
 + [ ] implement focus:true attribute
 
-### create markdown editor [parent](user-story/user-can-view-a-thinkope)
+### create markdown editor [parent](/project/user-stories/user-can-view-a-thinkope)
 + three views
     + DefaultEditor
         + sees raw text
@@ -45,7 +45,7 @@ state: "active"
     + TestEditor
         + raw view of EditorState
 
-### resize container view by dragging boundary [parent](user-story/user-can-view-a-thinkope)
+### resize container view by dragging boundary [parent](/project/user-stories/user-can-view-a-thinkope)
 + [ ] get container view to show a line separating the contained views
 + [ ] detect hover over line
     + allow line to be dragged left or right
@@ -54,4 +54,4 @@ state: "active"
         + this may be involved, but it's a great model for updating view-only data
 
 ### think about internal data structure
-+ see /tech
++ see [data structure design](/tech/data-structure)

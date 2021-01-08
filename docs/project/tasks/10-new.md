@@ -4,7 +4,7 @@ type: "task"
 state: "new"
 ---
 
-### create first view [parent](user-story/user-can-view-a-thinkope)
+### create first view [parent](/project/user-stories/user-can-view-a-thinkope)
 + is a React component
 + simple view
 + takes JSON data and renders to DOM
@@ -14,9 +14,9 @@ state: "new"
 + selection needs to be focus-aware
     + view with focus:true sets the actual selection
     + views without it set some kind of highlight or virtual selection
-+ see design
++ see [view design](/tech/view-design)
 
-### create local file service [parent](user-story/user-can-view-a-thinkope)
+### create local file service [parent](/project/user-stories/user-can-view-a-thinkope)
 + read file from local source
     + Node.js microservice
     + local instance of TH that serves local repo
@@ -67,7 +67,7 @@ https://reactrocket.com/post/draft-js-search-and-replace/
 + use [MyBinder](https://mybinder.readthedocs.io/en/latest/)
     + for docker-based run-time execution of Notebooks
 
-### switch from whole-text to patches [parent](user-story/user-can-view-a-thinkope)
+### switch from whole-text to patches [parent](/project/user-stories/user-can-view-a-thinkope)
 + currently passing whole-text
   - which slows dramatically as text length increases
   + because it creates a lot of re-rendering and string parsing
