@@ -4,6 +4,7 @@ import TestDatasource from "./TestDatasource";
 // convert source array into key-based object (output object, so cannot simply map)
 const index = {};
 [GithubDatasource, TestDatasource].forEach((source) => {
+    // use static class variable to index
     if (source.key) {
         index[source.key] = source;
     }

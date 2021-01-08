@@ -17,9 +17,9 @@ class DefaultEditor extends Component {
         };
     }
 
-    focus = () => {
+    focus() {
         this.editor.focus();
-    };
+    }
 
     handleEditorChange(editorState) {
         // update local state to maintain non-text attributes (e.g. selection)
