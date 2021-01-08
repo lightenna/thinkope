@@ -4,9 +4,6 @@ type: "task"
 state: "active"
 ---
 
-### address duplicate DataWrapper
-+ looks like Router is double-calling the Wrapper
-
 ### apply focus to first 'focusable' view in container [parent](user-story/user-can-view-a-thinkope)
 + probably a depth-first search across all containers
     + until we find a focusable view
@@ -24,11 +21,19 @@ state: "active"
         + will need to introduce virtual caret (line) and virtual selection (off-blue)
         + selecting in one makes something selected in the other
     + should also update URL state
+        + selections can be serialised in the URL
+            + they're part of each view state
         + maybe hashbang #L1-L6
             + maybe with character offsets #L1.13-L6.4
         + [github example](https://github.com/aderaaij/react-redux-github-api-example/blob/master/src/constants/ActionTypes.js#L1-L6)
     + clicking into an editor pane highlights it
         + virtual selections become real selections
+        + that view then carries the "focus": true attribute
++ decided not to auto-apply focus
+    + better to carry in URL
+    + auto-apply is relatively trivial later
+        + by parsing the URL state and identifying that nothing has the focus yet
++ [ ] implement focus:true attribute
 
 ### create markdown editor [parent](user-story/user-can-view-a-thinkope)
 + three views

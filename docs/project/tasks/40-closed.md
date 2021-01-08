@@ -5,6 +5,14 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
+### address duplicate DataWrapper
++ looks like Router is double-calling the Wrapper
+    + it does
++ therefore the constructor is called twice
++ thankfully componentDidMount is only called once
+    + that's where we're currently doing the loadData()
+> ignore for now
+
 ### cook up some kind of exception handling and reporting [parent](user-story/user-can-view-a-thinkope)
 + throw exception on bad datasource
     + use generically defined ErrorBoundaries

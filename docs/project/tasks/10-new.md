@@ -9,6 +9,13 @@ state: "new"
 + simple view
 + takes JSON data and renders to DOM
 
+### capture selection state into URL
++ also apply URL selection to views
++ selection needs to be focus-aware
+    + view with focus:true sets the actual selection
+    + views without it set some kind of highlight or virtual selection
++ see design
+
 ### create local file service [parent](user-story/user-can-view-a-thinkope)
 + read file from local source
     + Node.js microservice
