@@ -1,8 +1,9 @@
 import GithubDatasource from "./GithubDatasource";
 import TestDatasource from "./TestDatasource";
 
+// convert source array into key-based object (output object, so cannot simply map)
 const index = {};
-[ GithubDatasource, TestDatasource].map((source, i) => {
+[GithubDatasource, TestDatasource].forEach((source) => {
     if (source.key) {
         index[source.key] = source;
     }
