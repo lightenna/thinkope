@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Editor, EditorState} from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import '../styles/editorView.css';
+import PropTypes from "prop-types";
 
 class DefaultEditor extends Component {
 
@@ -15,6 +16,12 @@ class DefaultEditor extends Component {
             // non-text state
             editorState: EditorState.createEmpty()
         };
+    }
+
+    componentDidMount() {
+        if (this.props.view.focus) {
+            this.focus();
+        }
     }
 
     focus() {
@@ -41,6 +48,13 @@ class DefaultEditor extends Component {
                 />
             </div>
         );
+    }
+
+    static get propTypes() {
+        return {
+            view: PropTypes.object.isRequired,
+            editorState: PropTypes.object.isRequired,
+        };
     }
 }
 
