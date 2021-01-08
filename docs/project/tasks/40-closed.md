@@ -27,6 +27,11 @@ sort: "newly completed at top"
 + for now should just show simple text editor
     + lets users write something...
 
+### create first view [parent](/project/user-stories/user-can-view-a-thinkope)
++ is a React component
++ simple view
++ takes JSON data and renders to DOM
+
 ### set up @github datasource [parent](/project/user-stories/user-can-view-a-thinkope)
 + pre-bake credentials for URL
     + [base](https://api.github.com/)

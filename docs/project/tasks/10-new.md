@@ -4,11 +4,6 @@ type: "task"
 state: "new"
 ---
 
-### create first view [parent](/project/user-stories/user-can-view-a-thinkope)
-+ is a React component
-+ simple view
-+ takes JSON data and renders to DOM
-
 ### capture selection state into URL
 + also apply URL selection to views
 + selection needs to be focus-aware
