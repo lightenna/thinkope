@@ -1,20 +1,18 @@
-import {Route, Switch} from "react-router-dom";
-import Wrapper from "../components/DataWrapper";
-import React from "react";
+import RouteHandler from "../components/RouteHandler";
 import NotFoundPage from "../components/NotFoundPage";
 
-export const routes = [
+export const index = [
     {
         path: "/@:datasource/:path+",
-        component: Wrapper,
+        component: RouteHandler,
     },
     {
         path: "/:path+",
-        component: Wrapper,
+        component: RouteHandler,
     },
     {
         path: "/",
-        component: Wrapper,
+        component: RouteHandler,
     },
     {
         path: "**",

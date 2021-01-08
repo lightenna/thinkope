@@ -4,36 +4,7 @@ type: "task"
 state: "active"
 ---
 
-### ingest data from local source [parent](user-story/user-can-view-a-thinkope)
-+ load as JLOB
-+ pass to Redux (internal state) on init
-    + [draftJS how to init](https://stackoverflow.com/questions/35884112/draftjs-how-to-initiate-an-editor-with-content)
-+ identify ingest location
-    + really it's got nothing to do with the editors
-    + it's central, the redux store/editored slice
-    + but it's based on URL and we only parse that out in ViewWrapper
-+ [X] fix "cannot update" bug
-    + clicking dispatches event, but does not set caret
-    > moved to single editorStateWrap around entire ViewWrapper
-    + makes sense because we've got
-        + a single redux store
-        + single reducer
-        + multiple views dispatching events
-+ [ ] design switch out stub load for real one
-    + currently just loading text
-        + need to load from a web service
-        + suggest node express
-            + serve app (built)
-            + field requests
-                + simple node file server [serve-static](http://expressjs.com/en/resources/middleware/serve-static.html)
-    + local isn't obvious
-        + but it's straight-forward for a developer's first-use experience
-            + start thinkope/app, start local node express app, play with local files
-        + probably want to make it align to the @github datasource operations
-            + we can use rest calls directly into that
-                + might be worth 
-
-### apply focus to first 'focusable' view in container [parent](user-story/user-can-view-a-thinkope)
+### apply focus to first 'focusable' view in container [parent](/project/user-stories/user-can-view-a-thinkope)
 + probably a depth-first search across all containers
     + until we find a focusable view
     + can always change out the search order later
@@ -50,13 +21,21 @@ state: "active"
         + will need to introduce virtual caret (line) and virtual selection (off-blue)
         + selecting in one makes something selected in the other
     + should also update URL state
+        + selections can be serialised in the URL
+            + they're part of each view state
         + maybe hashbang #L1-L6
             + maybe with character offsets #L1.13-L6.4
         + [github example](https://github.com/aderaaij/react-redux-github-api-example/blob/master/src/constants/ActionTypes.js#L1-L6)
     + clicking into an editor pane highlights it
         + virtual selections become real selections
+        + that view then carries the "focus": true attribute
++ decided not to auto-apply focus
+    + better to carry in URL
+    + auto-apply is relatively trivial later
+        + by parsing the URL state and identifying that nothing has the focus yet
++ [ ] implement focus:true attribute
 
-### create markdown editor [parent](user-story/user-can-view-a-thinkope)
+### create markdown editor [parent](/project/user-stories/user-can-view-a-thinkope)
 + three views
     + DefaultEditor
         + sees raw text
@@ -66,7 +45,7 @@ state: "active"
     + TestEditor
         + raw view of EditorState
 
-### resize container view by dragging boundary [parent](user-story/user-can-view-a-thinkope)
+### resize container view by dragging boundary [parent](/project/user-stories/user-can-view-a-thinkope)
 + [ ] get container view to show a line separating the contained views
 + [ ] detect hover over line
     + allow line to be dragged left or right
@@ -75,4 +54,4 @@ state: "active"
         + this may be involved, but it's a great model for updating view-only data
 
 ### think about internal data structure
-+ see /tech
++ see [data structure design](/tech/data-structure)

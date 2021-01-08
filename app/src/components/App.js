@@ -1,14 +1,14 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import './App.scss';
-import { routes } from "../routes/routes.js";
+import { index } from "../routes/";
 
 function App() {
     return (
         <div className="App">
             <h2>Far out in the uncharted backwaters....</h2>
             <Switch>
-                {routes.map((route, i) => (
+                {index.map((route, i) => (
                     <Route {...route} key={i} />
                 ))}
             </Switch>

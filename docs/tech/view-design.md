@@ -14,6 +14,10 @@ type: "techdoc"
     + a resource reference to the content
     + a unique selector for the view
     + current view-specific settings
+        + selection data
+            + hashbang for selection to be consistent with Github
+            + #L<line-number>.<character-number>-L<line-number>.<character-number>
+        + one view has focus:true
 + Try to comply with [RFC3986](https://tools.ietf.org/html/rfc3986#section-3.4)
     + pchar (path character) followed by query (query parameter)
 ```
@@ -41,6 +45,10 @@ type: "techdoc"
             + /@sourcename/path/including/multiple/slashes/file.type?view={"type":"fish","x":0.00002345,"y":0.000006789,"w":1.0,"h":0.05}
         + nested views
             + /@sourcename/path/including/multiple/slashes/file.type?view={"type":"container","orient":"horiz","split":[35.0,65.0],"sub":[{"type":"fish","x":0.1,"y":0.1,"w":0.05,"h":0.05},{"type":"fish","x":0.2,"y":0.2,"w":0.05,"h":0.05},{"type":"fish","x":0.1,"y":0.1,"w":0.4,"h":0.4})
+        + default view with marked selection by line
+            + /path/including/multiple/slashes/file.type#L1-6
+        + default view with marked selection by character
+            + /path/including/multiple/slashes/file.type#L1.13-6.4
 
 ### Views in views
 + Every view can contain multiple nested views

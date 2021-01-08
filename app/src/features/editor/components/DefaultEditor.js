@@ -32,15 +32,13 @@ class DefaultEditor extends Component {
         // combine text from props with non-text from state
         const combined_editor_state = EditorState.acceptSelection(this.props.editorState, this.state.editorState.getSelection());
         return (
-            <div className="blank-editor" onClick={this.focus}>
-                <div className="editor">
-                    <Editor
-                        ref={(element) => { this.editor = element; }}
-                        editorState={combined_editor_state}
-                        onChange={this.handleEditorChange}
-                        placeholder="write something..."
-                    />
-                </div>
+            <div className="default-editor editor" onClick={this.focus}>
+                <Editor
+                    ref={(element) => { this.editor = element; }}
+                    editorState={combined_editor_state}
+                    onChange={this.handleEditorChange}
+                    placeholder="write something..."
+                />
             </div>
         );
     }

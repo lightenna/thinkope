@@ -13,6 +13,5 @@ test('renders app without error', () => {
             </ConnectedRouter>
         </Provider>
     );
-
     expect(getByText(/Far out/i)).toBeInTheDocument();
 });

@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {EditorState, convertToRaw} from 'draft-js';
 
-const getEmptyState = () => {
+export const getEmptyState = () => {
     const editorState = EditorState.createEmpty();
     const contentState = editorState.getCurrentContent();
     return convertToRaw(contentState);
@@ -9,12 +9,12 @@ const getEmptyState = () => {
 
 export const editorStateSlice = createSlice({
     name: 'editor',
+    // initialState used by editors before content loaded
     initialState: {
         jlob: getEmptyState(),
     },
     reducers: {
         update: (state, action) => {
-            console.log('redux action: ', action.type, action.payload);
             return {
                 ...state,
                 jlob: action.payload,

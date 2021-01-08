@@ -5,10 +5,84 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
-### test two editor views side-by-side [parent](user-story/user-can-view-a-thinkope)
+### address duplicate DataWrapper
++ looks like Router is double-calling the Wrapper
+    + it does
++ therefore the constructor is called twice
++ thankfully componentDidMount is only called once
+    + that's where we're currently doing the loadData()
+> ignore for now
+
+### cook up some kind of exception handling and reporting [parent](/project/user-stories/user-can-view-a-thinkope)
++ throw exception on bad datasource
+    + use generically defined ErrorBoundaries
+        + don't worry about error overlay in dev (can 'X')
++ [X] fix test suite now exceptions being thrown
+    + [RTL waitFor](https://testing-library.com/docs/guide-disappearance/)
+    + [Enzyme createWaitForElement](https://www.npmjs.com/package/enzyme-wait)
+
+### create simple DefaultEditor for / route
++ will eventually need some kind of file loader
+    + organised by datasource
++ for now should just show simple text editor
+    + lets users write something...
+
+### create first view [parent](/project/user-stories/user-can-view-a-thinkope)
++ is a React component
++ simple view
++ takes JSON data and renders to DOM
+
+### set up @github datasource [parent](/project/user-stories/user-can-view-a-thinkope)
++ pre-bake credentials for URL
+    + [base](https://api.github.com/)
++ add whitelist of query parameters
+    + then pass on those params in the request
+        + e.g. ref (for specifying the branch)
+
+### research loading data from first source [parent](/project/user-stories/user-can-view-a-thinkope)
++ pass to Redux (internal state) on init
+    + [draftJS how to init](https://stackoverflow.com/questions/35884112/draftjs-how-to-initiate-an-editor-with-content)
++ identify ingest location
+    + really it's got nothing to do with the editors
+    + it's central, the redux store/editored slice
+    + but it's based on URL and we only parse that out in ViewWrapper
++ [X] stub out with simple hard-coded text
++ [X] fix "cannot update" bug
+    + clicking dispatches event, but does not set caret
+  > moved to single editorStateWrap around entire ViewWrapper
+    + makes sense because we've got
+        + a single redux store
+        + single reducer
+        + multiple views dispatching events
++ design load op
+    + currently just loading text
+        + need to load from a web service
+        + suggest node express
+            + serve app (built)
+            + field requests
+                + simple node file server [serve-static](http://expressjs.com/en/resources/middleware/serve-static.html)
+    + local isn't obvious
+        + but it's straight-forward for a developer's first-use experience
+            + start thinkope/app, start local node express app, play with local files
+        + probably want to make it align to the @github datasource operations
+            + we can use rest calls directly into that
+                + might be worth coding that first
+                    + /repos/:owner/:repo/contents/:path
+                        + [api request for metadata about file](https://api.github.com/repos/lightenna/thinkope/contents/README.md)
+                            + includes download link for file
+                        + [http link to file](https://raw.githubusercontent.com/lightenna/thinkope/develop/README.md)
+                            + or API request 'github' link for base64-encoded content
+                        + [github link](https://api.github.com/repos/lightenna/thinkope/git/blobs/ab936d52ff60645a99f9d97cf6687c2fda47444a)
+      > do @github datasource first
+
+### produce mock JSON data
++ static example to feed initial view development
+    + will also help with testing
+
+### test two editor views side-by-side [parent](/project/user-stories/user-can-view-a-thinkope)
 + sync works with two isolated EditorState objects
 
-### embed editor view [parent](user-story/user-can-view-a-thinkope)
+### embed editor view [parent](/project/user-stories/user-can-view-a-thinkope)
 + redux based
 + start with [DraftJS](https://draftjs.org/)
 + capture and propagate update
@@ -137,7 +211,7 @@ sort: "newly completed at top"
     + want to use a relatively standard patch format
 + maybe [JSONPatch](http://jsonpatch.com/)
 
-### create container view [parent](user-story/user-can-view-a-thinkope)
+### create container view [parent](/project/user-stories/user-can-view-a-thinkope)
 + acceptance criteria
     + [X] contains nested 1 or more sub-views
     + [X] allows proportional screen splitting
@@ -168,9 +242,9 @@ sort: "newly completed at top"
 
 ### fix missing manifest.json for packaged docsapp
 
-### stop flash of 'Page not found' [parent](user-story/user-can-view-a-thinkope)
+### stop flash of 'Page not found' [parent](/project/user-stories/user-can-view-a-thinkope)
 
-### migrate away from Slingshot [parent](user-story/user-can-view-a-thinkope)
+### migrate away from Slingshot [parent](/project/user-stories/user-can-view-a-thinkope)
 + too many issues with hot reloading
 + use create-react-app instead
 `npx create-react-app my-app --template redux`
@@ -178,7 +252,7 @@ sort: "newly completed at top"
 + [X] rebuild webpack config
 + [X] deploy live
 
-### create react-based SPA [parent](user-story/user-can-view-a-thinkope)
+### create react-based SPA [parent](/project/user-stories/user-can-view-a-thinkope)
 + [X] start with React Router
 [SPA ref](https://github.com/rafgraph/spa-github-pages)
     + [X] set up 404 redirection as part of integrated microsite
@@ -198,7 +272,7 @@ sort: "newly completed at top"
         + mock-up local /dist with parameterised basepath
 + [X] clear down dist folder before build
 
-### create simple placeholder favicon [parent](user-story/user-can-view-a-thinkope)
+### create simple placeholder favicon [parent](/project/user-stories/user-can-view-a-thinkope)
 + [Th](https://favicon.io/favicon-generator/?t=Th&ff=ABeeZee&fs=70&fc=%23FFFFFF&b=rounded&bc=%23888)
 
 ### create index page for /tech
@@ -209,11 +283,11 @@ sort: "newly completed at top"
     + index
     + the README is for GitHub.com, which already indexes fine for now
 + tech should use Thinkope too
-    + /tech is full of thinking
-    + it's a less clear use-case than /project (fits easily with todo)
+    + [tech docs](/tech) is full of thinking
+    + it's a less clear use-case than [project docs](/project) (fits easily with todo)
         + but it's exactly what we're trying to encourage
 
-### evaluate lists on GitHub.com [parent](user-story/user-can-view-a-thinkope)
+### evaluate lists on GitHub.com [parent](/project/user-stories/user-can-view-a-thinkope)
 + [X] commit and push latest site
 + [X] establish what the default view looks like
 + [X] check README.md markdown section link ('Getting started')

@@ -4,16 +4,14 @@ type: "task"
 state: "new"
 ---
 
-### create first view [parent](user-story/user-can-view-a-thinkope)
-+ is a React component
-+ simple view
-+ takes JSON data and renders to DOM
+### capture selection state into URL
++ also apply URL selection to views
++ selection needs to be focus-aware
+    + view with focus:true sets the actual selection
+    + views without it set some kind of highlight or virtual selection
++ see [view design](/tech/view-design)
 
-### produce mock JSON data
-+ static example to feed initial view development
-    + will also help with testing
-
-### create local file service [parent](user-story/user-can-view-a-thinkope)
+### create local file service [parent](/project/user-stories/user-can-view-a-thinkope)
 + read file from local source
     + Node.js microservice
     + local instance of TH that serves local repo
@@ -64,7 +62,7 @@ https://reactrocket.com/post/draft-js-search-and-replace/
 + use [MyBinder](https://mybinder.readthedocs.io/en/latest/)
     + for docker-based run-time execution of Notebooks
 
-### switch from whole-text to patches [parent](user-story/user-can-view-a-thinkope)
+### switch from whole-text to patches [parent](/project/user-stories/user-can-view-a-thinkope)
 + currently passing whole-text
   - which slows dramatically as text length increases
   + because it creates a lot of re-rendering and string parsing
@@ -72,4 +70,3 @@ https://reactrocket.com/post/draft-js-search-and-replace/
   + patch passed through to all other components
   + work out how to diff
 + [ ] save editor text into the store using patches
-

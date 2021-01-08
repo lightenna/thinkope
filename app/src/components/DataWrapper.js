@@ -3,8 +3,10 @@ import {withRouter} from "react-router";
 import PropTypes from "prop-types";
 import ViewWrapper from "./ViewWrapper";
 import editorStateWrap from "../features/editor/editorStateWrap";
+import {find} from "../datasources/";
+import qs from "qs";
 
-const default_datasource = 'local';
+const default_datasource = undefined;
 
 class DataWrapper extends React.Component {
 
@@ -14,22 +16,58 @@ class DataWrapper extends React.Component {
         const params = props.match.params;
         const datasource = params.datasource || default_datasource;
         const path = '/' + (params.path || "");
-        this.state = { metadata: {
-            'path': path,
-            'datasource': datasource
-        }};
-        // load data to store
-        this.loadData(datasource, path);
+        const query = qs.parse(this.props.location.search, {ignoreQueryPrefix: true});
+        this.state = {
+            metadata: {
+                'path': path,
+                'datasource': datasource,
+                'query': query,
+            },
+        };
     }
 
-    loadData(datasource, path) {
-        // @todo replace stub with proper load operation
-        const text = "one\ntwo\nthree\nfour five six";
-        this.props.updateEditorRawText(text);
+    componentDidMount() {
+        if (this.state.metadata.datasource) {
+            this.loadData();
+        }
+    }
+
+    getAsyncErrorHandler() {
+        var that = this;
+        return (err) => {
+            const env = process.env.NODE_ENV;
+            if (env && env !== 'test') {
+                console.log('getAsyncErrorHandler', err);
+            }
+            that.setState((state, props) => {
+                throw new Error(err);
+            });
+        }
+    }
+
+    loadData() {
+        const locmd = this.state.metadata;
+        const error_handler = this.getAsyncErrorHandler();
+        const dsmetadata = find(locmd.datasource, error_handler);
+        if (dsmetadata) {
+            const req_url = dsmetadata.getUrl(locmd.path, locmd.query);
+            dsmetadata.getData(req_url)
+                .then((data) => {
+                    this.props.updateEditorRawText(data);
+                })
+                .catch((err) => {
+                    error_handler(err);
+                });
+        }
     }
 
     render() {
-        return <ViewWrapper location={this.props.location} metadata={this.state.metadata} {...this.props} />;
+        // include ...this.props to pass on store actions
+        return (
+            <div id="data-wrapper">
+                <ViewWrapper location={this.props.location} metadata={this.state.metadata} {...this.props} />
+            </div>
+        );
     }
 
     static get propTypes() {

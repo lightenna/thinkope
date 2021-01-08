@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 // directly loaded views
 import TestEditor from '../features/editor/components/TestEditor';
 import ContainerView from './views/ContainerView';
+import ViewErrorBoundary from "./boundaries/ViewErrorBoundary";
 // lazy-loaded views
 const DefaultEditor = React.lazy(() => import('../features/editor/components/DefaultEditor'));
 
@@ -38,6 +39,16 @@ class ViewWrapper extends React.Component {
         return view;
     };
 
+    wrap(type, view) {
+        return (
+            <ViewErrorBoundary>
+                <div className={`view type-${type}`}>
+                    {view}
+                </div>
+            </ViewErrorBoundary>
+        );
+    };
+
     render_specialised_view(view, subviews, key) {
         const {type} = view;
         // use type to instantiate correct view type
@@ -46,11 +57,11 @@ class ViewWrapper extends React.Component {
                 const container_view = <ContainerView view={view} key={key} sub={subviews}/>;
                 return <GenericLazyLoad target={container_view} detectIfLazy={ContainerView}/>;
             case 'editor' :
-                const editor_view = <DefaultEditor view={view} key={key} {...this.props}/>;
+                const editor_view = this.wrap(type, <DefaultEditor view={view} key={key} {...this.props}/>);
                 return <GenericLazyLoad target={editor_view} detectIfLazy={DefaultEditor}/>;
             case 'test' :
             default :
-                return <TestEditor view={view} key={key} {...this.props}/>;
+                return this.wrap(type, <TestEditor view={view} key={key} {...this.props}/>);
         }
     };
 
@@ -63,13 +74,19 @@ class ViewWrapper extends React.Component {
     render() {
         const query = qs.parse(this.props.location.search, {ignoreQueryPrefix: true});
         const view = this.getView(query);
-        return this.render_view_recursive(view, this.props.metadata, 0);
+        const rendered_views = this.render_view_recursive(view, this.props.metadata, 0);
+        return (
+            <div id="view-wrapper">
+                {rendered_views}
+            </div>
+        )
     }
 
     static get propTypes() {
         return {
             location: PropTypes.object.isRequired,
-            metadata: PropTypes.object.isRequired
+            metadata: PropTypes.object.isRequired,
+            editorState: PropTypes.object.isRequired,
         };
     }
 }
