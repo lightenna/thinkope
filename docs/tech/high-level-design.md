@@ -3,7 +3,7 @@ title: "App design"
 type: "techdoc"
 ---
 
-### Research techs to shape architecture
+### Techs to shape architecture
 + React - component-driven views
 + Redux - for editor undo history
 + [Draft.js](https://github.com/facebook/draft-js) - for editor view
