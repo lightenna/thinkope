@@ -6,6 +6,6 @@ test('container view instantiates without error', () => {
     const wrapper = mount(
         <ContainerView view={{}} sub={[0,0]} />
     );
-    expect(wrapper.find('.view')).toHaveLength(1);
+    expect(wrapper.find('.orient-horiz')).toHaveLength(1);
     wrapper.unmount();
 });

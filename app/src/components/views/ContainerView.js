@@ -5,7 +5,7 @@ import './ContainerView.scss';
 class ContainerView extends React.Component {
     render() {
         const orientation = this.props.view.orient || 'horiz';
-        const class_names = `view type-container orient-${orientation}`;
+        const class_names = `orient-${orientation}`;
         const styles = (this.props.view.split || [50, 50]).map((subview_split, i) => {
             if (orientation === 'horiz') {
                 return {'width': `${subview_split}%`};
@@ -23,6 +23,10 @@ class ContainerView extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    static get characteristics() {
+        return {};
     }
 
     static get propTypes() {

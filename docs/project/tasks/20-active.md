@@ -4,36 +4,21 @@ type: "task"
 state: "active"
 ---
 
-### apply focus to first 'focusable' view in container [parent](/project/user-stories/user-can-view-a-thinkope)
-+ probably a depth-first search across all containers
-    + until we find a focusable view
-    + can always change out the search order later
-+ just need to have the caret in an editor ready to type as soon as it's loaded
-    + editor views are lazy loaded
-        + that means we don't exactly know when to give them the caret
-        + could store focus events centrally
-            + that's probably a good idea anyway
-    + view flagged as requesting caret
-        + only requests the caret after it's loaded
-        + caret drops in once loaded so long as no other view can requested it
-+ working towards a proper selection model
-    + want to show the same thing selected in multiple editors
-        + will need to introduce virtual caret (line) and virtual selection (off-blue)
-        + selecting in one makes something selected in the other
-    + should also update URL state
-        + selections can be serialised in the URL
-            + they're part of each view state
-        + maybe hashbang #L1-L6
-            + maybe with character offsets #L1.13-L6.4
-        + [github example](https://github.com/aderaaij/react-redux-github-api-example/blob/master/src/constants/ActionTypes.js#L1-L6)
-    + clicking into an editor pane highlights it
-        + virtual selections become real selections
-        + that view then carries the "focus": true attribute
-+ decided not to auto-apply focus
-    + better to carry in URL
-    + auto-apply is relatively trivial later
-        + by parsing the URL state and identifying that nothing has the focus yet
-+ [ ] implement focus:true attribute
+### apply focus to view, even if none selected
++ algorithm for deciding which view to focus on can be super simple
+    + select first 'focusable'
++ think about view properties
+    + each view type surfaces certain characteristics
+        + focusable is a characteristic
+    + as static object
++ [X] translate view type into class
+    + want to be able to poll each of the classes to understand its characteristics
+        > compile views to store classes, but beware lazy-loading!
+    + cannot use static characteristics at view-render time
+        + only after the view has loaded (lazily)
++ [ ] implement focus using API request
+    + first view that loads and requests focus
+    + need some kind of API that the views can request focus from
 
 ### create markdown editor [parent](/project/user-stories/user-can-view-a-thinkope)
 + three views
