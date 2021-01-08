@@ -21,9 +21,9 @@ class ViewWrapper extends React.Component {
 
     isJSONString(str) {
         return (str.indexOf('"') !== -1);
-    };
+    }
 
-    getView(query) {
+    getViewTree(query) {
         const view = Object.assign({}, default_view);
         if (query.view) {
             if (this.isString(query.view)) {
@@ -37,7 +37,28 @@ class ViewWrapper extends React.Component {
             }
         }
         return view;
-    };
+    }
+
+    compileViewTree(view) {
+        const {type} = view;
+        const subviews = (view.sub || []).map((subview, i) => this.compileViewTree(subview, i));
+        const compiled_view = Object.assign({}, view, {
+            sub: subviews
+        });
+        switch (type) {
+            case 'container' :
+                compiled_view['class_type'] = ContainerView;
+                break;
+            case 'editor' :
+                compiled_view['class_type'] = DefaultEditor;
+                break;
+            case 'test' :
+            default :
+                compiled_view['class_type'] = TestEditor;
+                break;
+        }
+        return compiled_view;
+    }
 
     wrap(type, view) {
         return (
@@ -47,34 +68,32 @@ class ViewWrapper extends React.Component {
                 </div>
             </ViewErrorBoundary>
         );
-    };
+    }
 
-    render_specialised_view(view, subviews, key) {
+    renderSpecialisedView(view, subviews, key) {
         const {type} = view;
-        // use type to instantiate correct view type
-        switch (type) {
-            case 'container' :
-                const container_view = <ContainerView view={view} key={key} sub={subviews}/>;
-                return <GenericLazyLoad target={container_view} detectIfLazy={ContainerView}/>;
-            case 'editor' :
-                const editor_view = this.wrap(type, <DefaultEditor view={view} key={key} {...this.props}/>);
-                return <GenericLazyLoad target={editor_view} detectIfLazy={DefaultEditor}/>;
-            case 'test' :
-            default :
-                return this.wrap(type, <TestEditor view={view} key={key} {...this.props}/>);
-        }
-    };
+        const rendered_view = React.createElement(view.class_type, {
+            view: view,
+            key: key,
+            sub: subviews,
+            ...this.props,
+        }, null);
+        // always wrap the view in a typed DOM element
+        const wrapped_view = this.wrap(type, rendered_view);
+        // attempt to lazy-load but fallback if not lazy loadable (see includes/React.lazy)
+        return <GenericLazyLoad target={wrapped_view} detectIfLazy={view.class_type}/>;
+    }
 
-    render_view_recursive(view, metadata, key) {
-        const subviews = (view.sub || []).map((subview, i) => this.render_view_recursive(subview, i));
+    renderViewRecursive(view, metadata, key) {
+        const subviews = (view.sub || []).map((subview, i) => this.renderViewRecursive(subview, i));
         const view_with_metadata = Object.assign({}, view, this.props.metadata);
-        return this.render_specialised_view(view_with_metadata, subviews, key);
-    };
+        return this.renderSpecialisedView(view_with_metadata, subviews, key);
+    }
 
     render() {
         const query = qs.parse(this.props.location.search, {ignoreQueryPrefix: true});
-        const view = this.getView(query);
-        const rendered_views = this.render_view_recursive(view, this.props.metadata, 0);
+        const top_level_view = this.compileViewTree(this.getViewTree(query));
+        const rendered_views = this.renderViewRecursive(top_level_view, this.props.metadata, 0);
         return (
             <div id="view-wrapper">
                 {rendered_views}

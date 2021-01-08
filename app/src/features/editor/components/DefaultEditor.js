@@ -50,6 +50,12 @@ class DefaultEditor extends Component {
         );
     }
 
+    static get characteristics() {
+        return {
+            focusable: true
+        };
+    }
+
     static get propTypes() {
         return {
             view: PropTypes.object.isRequired,
