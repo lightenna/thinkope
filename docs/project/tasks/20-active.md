@@ -13,11 +13,32 @@ state: "active"
         + lots of formatting buttons
     + TestEditor
         + raw view of EditorState
-+ integrate Editor [Mulesoft's Markdown draft.js](https://www.npmjs.com/package/md-draft-js)
++ unclear how different packages are going to treat the underlying editorState
+    + try a couple of editors and a couple of plugins
+        + may need to adapt the underlying editorState to be visual
+            + i.e. covert markdown to contentState first
+        + that too will affect how other views parse the data
+        + also has downstream implications for edit > parse > write-back
+            + what content gets affected (semantic change)
+            + what syntax gets affected (syntactical change)
+            + how do we handle notifications of the different changes
+    + integrating the editors/plugins will inform that data architecture change
++ [X] integrate Editor [Mulesoft's Markdown draft.js](https://www.npmjs.com/package/md-draft-js)
     + looks like the open source repo has been pulled
     + but it's still available in NPM, MIT licence
-+ integrate Editor [Draftail](https://www.draftail.org/)
+    + out-of-date
+        + key functions are not implemented
+            + `editorState.getCurrentContent` and `editorState.getSelection`
++ [X] integrate Editor [Draftail](https://www.draftail.org/)
+    + not real updates since 2019
+    + built against draft 0.10.5
+        + 0.10.5 build throws error
+        - no `EditorState.createWithText` function
+    + 0.11.x branch incomplete and no progress since May 2019
+        + doesn't run
 + integrate Plugin [Fluent Markdown Plugin](https://github.com/makeflow/draft-js-fluent-markdown-plugin)
++ integrate Plugin [Markdown Shortcuts Plugin](https://github.com/ngs/draft-js-markdown-shortcuts-plugin)
+    + or could use [withspectrum branch](https://github.com/withspectrum/draft-js-markdown-plugin)
 
 ### apply focus to view, even if none selected
 + algorithm for deciding which view to focus on can be super simple

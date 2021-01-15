@@ -87,7 +87,6 @@ type: "techdoc"
             + uppercasing
 + Markdown editor view allows you to edit rendered markdown
     + add UI buttons for bold/italic/list etc.
-https://github.com/withspectrum/draft-js-markdown-plugin
 + Markdown conversion
     + sstur
         + [draft-js-import-markdown](https://www.npmjs.com/package/draft-js-import-markdown)

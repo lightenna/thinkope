@@ -8,6 +8,7 @@ import ContainerView from './views/ContainerView';
 import ViewErrorBoundary from "./boundaries/ViewErrorBoundary";
 // lazy-loaded views
 const DefaultEditor = React.lazy(() => import('../features/editor/components/DefaultEditor'));
+const MarkdownEditor = React.lazy(() => import('../features/editor/components/MarkdownEditor'));
 
 const default_view = {
     type: 'editor',
@@ -51,6 +52,9 @@ class ViewWrapper extends React.Component {
                 break;
             case 'editor' :
                 compiled_view['class_type'] = DefaultEditor;
+                break;
+            case 'markdownWysiwygEditor' :
+                compiled_view['class_type'] = MarkdownEditor;
                 break;
             case 'test' :
             default :
