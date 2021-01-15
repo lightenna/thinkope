@@ -4,6 +4,21 @@ type: "task"
 state: "active"
 ---
 
+### create markdown editor [parent](/project/user-stories/user-can-view-a-thinkope)
++ three views
+    + DefaultEditor
+        + sees raw text
+    + MarkdownEditor
+        + sees nicely rendered Markdown-as-HTML
+        + lots of formatting buttons
+    + TestEditor
+        + raw view of EditorState
++ integrate Editor [Mulesoft's Markdown draft.js](https://www.npmjs.com/package/md-draft-js)
+    + looks like the open source repo has been pulled
+    + but it's still available in NPM, MIT licence
++ integrate Editor [Draftail](https://www.draftail.org/)
++ integrate Plugin [Fluent Markdown Plugin](https://github.com/makeflow/draft-js-fluent-markdown-plugin)
+
 ### apply focus to view, even if none selected
 + algorithm for deciding which view to focus on can be super simple
     + select first 'focusable'
@@ -19,16 +34,6 @@ state: "active"
 + [ ] implement focus using API request
     + first view that loads and requests focus
     + need some kind of API that the views can request focus from
-
-### create markdown editor [parent](/project/user-stories/user-can-view-a-thinkope)
-+ three views
-    + DefaultEditor
-        + sees raw text
-    + MarkdownEditor
-        + sees nicely rendered Markdown-as-HTML
-        + lots of formatting buttons
-    + TestEditor
-        + raw view of EditorState
 
 ### resize container view by dragging boundary [parent](/project/user-stories/user-can-view-a-thinkope)
 + [ ] get container view to show a line separating the contained views
