@@ -41,6 +41,12 @@ type: "techdoc"
 + this means that the client has to parse
     + and potentially reorganise blocks
     + into a nested structure
++ different views will need different properties of the data
+    + level of detail
+        + show some but not necessarily all nested data
+    + references
+        + relationships between blocks
+    
 
 ### Changes
 + a change is a patch

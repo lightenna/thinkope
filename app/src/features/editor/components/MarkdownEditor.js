@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {Editor, EditorState} from 'draft-js';
+import {EditorState} from 'draft-js';
+import Editor from 'draft-js-plugins-editor';
 import 'draft-js/dist/Draft.css';
 import '../styles/editorView.css';
 import PropTypes from "prop-types";
+import createMarkdownShortcutsPlugin from 'draft-js-markdown-shortcuts-plugin';
 
 class MarkdownEditor extends Component {
 
@@ -14,7 +16,8 @@ class MarkdownEditor extends Component {
         // initialise state
         this.state = {
             // non-text state
-            editorState: EditorState.createEmpty()
+            editorState: EditorState.createEmpty(),
+            plugins: [createMarkdownShortcutsPlugin()]
         };
     }
 
@@ -38,6 +41,7 @@ class MarkdownEditor extends Component {
     render() {
         // combine text from props with non-text from state
         const combined_editor_state = EditorState.acceptSelection(this.props.editorState, this.state.editorState.getSelection());
+        // const combined_editor_state = this.state.editorState;
         return (
             <div className="default-editor editor" onClick={this.focus}>
                 <Editor
@@ -45,6 +49,7 @@ class MarkdownEditor extends Component {
                     editorState={combined_editor_state}
                     onChange={this.handleEditorChange}
                     placeholder="write something..."
+                    plugins={this.state.plugins}
                 />
             </div>
         );
