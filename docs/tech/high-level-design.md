@@ -6,8 +6,6 @@ type: "techdoc"
 ### Techs to shape architecture
 + React - component-driven views
 + Redux - for editor undo history
-+ [Draft.js](https://github.com/facebook/draft-js) - for editor view
-    + Can embed multiple editors from the [awesome gallery](https://github.com/nikgraf/awesome-draft-js)
 + Later
     + [Next.js](https://nextjs.org/) - SSR
     + [Next Redux Wrapper](https://github.com/kirill-konshin/next-redux-wrapper) - for sharing Redux stores server-side
