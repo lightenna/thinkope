@@ -43,7 +43,7 @@ class MarkdownEditor extends Component {
         const combined_editor_state = EditorState.acceptSelection(this.props.editorState, this.state.editorState.getSelection());
         // const combined_editor_state = this.state.editorState;
         return (
-            <div className="default-editor editor" onClick={this.focus}>
+            <div className="markdown-editor editor" onClick={this.focus}>
                 <Editor
                     ref={(element) => { this.editor = element; }}
                     editorState={combined_editor_state}

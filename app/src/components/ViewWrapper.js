@@ -9,7 +9,7 @@ import ViewErrorBoundary from "./boundaries/ViewErrorBoundary";
 // lazy-loaded views
 const DefaultEditor = React.lazy(() => import('../features/draft-js/components/DefaultEditor'));
 const MarkdownEditor = React.lazy(() => import('../features/draft-js/components/MarkdownEditor'));
-//const OutlineRichMarkdownEditor = React.lazy(() => import('../features/prosemirror/components/OutlineRichMarkdownEditor'));
+const OutlineRichMarkdownEditor = React.lazy(() => import('../features/prosemirror/components/OutlineRichMarkdownEditor'));
 
 const default_view = {
     type: 'editor',
@@ -57,9 +57,9 @@ class ViewWrapper extends React.Component {
             case 'markdownEditor' :
                 compiled_view['class_type'] = MarkdownEditor;
                 break;
-            // case 'outlineRichMarkdownEditor' :
-            //     compiled_view['class_type'] = OutlineRichMarkdownEditor;
-            //     break;
+            case 'outlineRichMarkdownEditor' :
+                compiled_view['class_type'] = OutlineRichMarkdownEditor;
+                break;
             case 'test' :
             default :
                 compiled_view['class_type'] = TestEditor;
