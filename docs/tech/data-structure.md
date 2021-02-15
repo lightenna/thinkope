@@ -71,9 +71,11 @@ type: "techdoc"
                 - it's an array rather than an object
     + suspect we'll end up supporting some kind of hierarchy
         + THUDS at the root
-        + an array of supported sub-types (components)
-            + Draft-type editors
-            + other editors
+            + translated to JLOB/value in features/xxxWrap
+        + an array of supported sub-types (features)
+            + Draft-type editors (features/draft-js)
+            + simple text editors
+            + THUDS-native editors
         + views can choose whether they hook into THUDS or one of the sub-types
             + the key thing is that all the information is in every sub-type
         + the sub-types have document constraints

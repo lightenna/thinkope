@@ -2,7 +2,7 @@ import React from 'react';
 import {withRouter} from "react-router";
 import PropTypes from "prop-types";
 import ViewWrapper from "./ViewWrapper";
-import editorStateWrap from "../features/editor/editorStateWrap";
+import editorStateWrap from "../features/draft-js/editorStateWrap";
 import {find} from "../datasources/";
 import qs from "qs";
 

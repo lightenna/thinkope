@@ -14,7 +14,7 @@ const editorStateWrap = (WrappedComponent) => {
 
     const mapStateToProps = (state) => {
         // create an editorState object based on 'raw' object persisted in redux store
-        const raw_object = state.editored.jlob;
+        const raw_object = state.draftjs_editorstate_reducer.jlob;
         return {
             editorState: EditorState.createWithContent(convertFromRaw(raw_object))
         };

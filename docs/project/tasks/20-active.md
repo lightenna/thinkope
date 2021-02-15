@@ -80,7 +80,7 @@ state: "active"
             + nice [online demo](https://codesandbox.io/s/qv10xzjw9j?file=/src/index.js)
                 + works well enough on **bold**, _italic_ case
                 + hoverbar is beautiful
-+ [ ] integrate Outline RME as best candidate
++ integrate Outline RME as best candidate
     + learn about non-Draft options (e.g. Prosemirror)
         + interested in its internal and exported data structure
             + similarity: how quickly can we convert from Prosemirror -> THUDS
@@ -90,6 +90,10 @@ state: "active"
         + requirement: simple enough that we trust all editors to edit it ACIDically
     - not Draft.js
     + not clear cut at this stage
+    + [ ] integrate ORME from the ground up
+        + don't worry about compatibility
+        + integration will inform internal data structure choices (THUDS)
+            + and the relationship with existing established data structures (like Draft's editorState)
 
 ### add line numbers to default text editor
 + [Gist](https://gist.github.com/lixiaoyan/79b5740f213b8526d967682f6cd329c0)
