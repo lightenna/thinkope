@@ -5,7 +5,7 @@ export const getEmptyState = () => {
 };
 
 export const valueSlice = createSlice({
-    name: 'editor',
+    name: 'value',
     // initialState used by editors before content loaded
     initialState: {
         defaultValue: getEmptyState(),
