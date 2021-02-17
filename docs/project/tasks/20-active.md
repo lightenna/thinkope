@@ -90,12 +90,36 @@ state: "active"
         + requirement: simple enough that we trust all editors to edit it ACIDically
     - not Draft.js
     + not clear cut at this stage
-    + [ ] integrate ORME from the ground up
+    + [X] integrate ORME from the ground up
         + don't worry about compatibility
         + integration will inform internal data structure choices (THUDS)
             + and the relationship with existing established data structures (like Draft's editorState)
+        + naturally crosses left to right (ORME to Draft-js-Markdown-Editor)
+            + sourced from Prosemirror (PM)
+            + currently re-rendering the Draft JLOB every change
+                + would be nice to merge into that
+                + might be able to do that as a diff
+                    + will create fast-update and slow-update sets of editors
+                        + got to be able to justify it as the most important next step
+                        + could delay optimisation for now
+                            + just use whole text replacements every time
+                            + that's going to create a lot of repainting
+                    + delay for now
+                        + we've got some editors that won't accept diffs
+                        + so we _have_ to manage them anyway
+                            + re-rendering everything with delays is good _enough_ for now
+                            + it will require and can be optimised later
+            + the tricky bit is the TH unified data structure (THUDS) design
+                + that's the bit that's harder to delay until later
+                    + fundamentally we either want to store plain text
+                    + or some kind of line-by-line block structure (THUDS JBOB or or Draft's JLOB) 
++ goal is to write-back PM changes to THUDS and then out to value
+    + [ ] understand why PM changes are making it to Draft's JLOB right now
 
-### add line numbers to default text editor
+### load content across all views
++ currently only loading into Draft.js (JLOB) views (markdownEditor and test)
+
+### add line numbers to default (draft) markdown text editor
 + [Gist](https://gist.github.com/lixiaoyan/79b5740f213b8526d967682f6cd329c0)
 + [Gutter example](http://seejamescode.github.io/draft-js-gutter/)
 

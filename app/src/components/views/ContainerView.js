@@ -13,14 +13,16 @@ class ContainerView extends React.Component {
                 return {'height': `${subview_split}%`};
             }
         });
+        const views = (this.props.sub || []).map((subview, i) => {
+            return (
+                <div key={i} className={"sub"} style={styles[i]}>
+                    {subview}
+                </div>
+            );
+        });
         return (
             <div className={class_names}>
-                <div className={"sub"} style={styles[0]}>
-                    {this.props.sub[0]}
-                </div>
-                <div className={"sub"} style={styles[1]}>
-                    {this.props.sub[1]}
-                </div>
+                {views}
             </div>
         );
     }
