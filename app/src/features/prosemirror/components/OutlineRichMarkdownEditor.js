@@ -29,7 +29,7 @@ class OutlineRichMarkdownEditor extends Component {
             // Prosemirror returns a function to request a serialisation of the document
             const value = serialise_function();
             // call Redux action to update other views
-            that.props.updateEditorRawText(value);
+            that.props.updateValue(value);
         }, time_after_last_change_to_action);
     }
 

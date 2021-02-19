@@ -1,14 +1,10 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-export const getEmptyState = () => {
-    return '';
-};
-
 export const valueSlice = createSlice({
     name: 'value',
     // initialState used by editors before content loaded
     initialState: {
-        defaultValue: getEmptyState(),
+        defaultValue: '',
     },
     reducers: {
         update: (state, action) => {

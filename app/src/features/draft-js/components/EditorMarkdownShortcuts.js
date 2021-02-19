@@ -6,7 +6,7 @@ import '../styles/editorView.css';
 import PropTypes from "prop-types";
 import createMarkdownShortcutsPlugin from 'draft-js-markdown-shortcuts-plugin';
 
-class MarkdownEditor extends Component {
+class EditorMarkdownShortcuts extends Component {
 
     constructor(props) {
         super(props);
@@ -69,4 +69,4 @@ class MarkdownEditor extends Component {
     }
 }
 
-export default MarkdownEditor;
+export default EditorMarkdownShortcuts;
