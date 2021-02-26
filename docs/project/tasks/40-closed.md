@@ -5,6 +5,33 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
+### think about chat/video-sharing between thinkers
++ eval [WebRTC](https://github.com/jakub-leszczynski/video-calling-app-example) for peer-to-peer video
+    + [latency for WebRTC](https://flashphoner.com/oh-webcam-online-broadcasting-latency-thou-art-a-heartless-bitch/)
+    + security of WebRTC, [excellent mechanics post](https://blog.sessionstack.com/how-javascript-works-webrtc-and-the-mechanics-of-peer-to-peer-connectivity-87cc56c1d0ab)
++ don't ping a list of local servers to find a nearby one
+    + hopefully all traffic is direct peer-to-peer
+    + once the connection has been brokered by the server
+        + a single, or just a few TURN servers are required as a fallback
++ create Video chat view POC
+    + experiment with latency
+    + latency seems quite high even over a LAN connection
+        + maybe better [audio-only](https://webrtc.github.io/samples/src/content/peerconnection/audio/)
+        + investigate [WebRTC data channels](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Simple_RTCDataChannel_sample)
+    + results are consistent on both tested connections for [WebRTC test](https://github.com/webrtc/testrtc)
+        + TURN servers handle NAT'd peer connections
+            + but can't go directly, i.e. have to be brokered by TURN server
++ could create an on-page timecode app
+    + transmit it to the remote end
+    + display received timecode and local timecode alongside one another
+        + chart diff
+    + could send via some kind of centralised update server
+        + that'll be needed for real-time doc change sync
+    + most significant updates are distributed through git
+        + versioned accordingly
+        + sync handles inter-commit changes
+            + real-time does not completely hide us from conflict issues
+
 ### load content across all views
 * currently only loading into Draft.js (JLOB) views (markdownEditor and test)
 
