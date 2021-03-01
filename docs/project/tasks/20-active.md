@@ -21,17 +21,46 @@ state: "active"
 
 ### debug integration between value-based and editorState-based views
 * still only proof-of-concept, but better integration informs THUDS design
-* [ ] fix missing content bug
+* [x] fix missing content bug
     * ORME view doesn't show all the sub-bullets
     * ORME parser is a problem
-        * doesn't like bulletted lists where some elements have a tick box
+        * doesn't like bulletted lists where some (but not all) elements have a tick box
     * It's sort of ruling ORME out of contention
         * because we'll need to do a lot of work to parse out the incompatible bits
-* [ ] ORME typing bug
+    * Fundamental problem with these editors
+        * .md -> editor -> .md is currently a destructive op
+            * that's not acceptable
+        * Need to process text without destroying the things that don't meet the format
+* [x] ORME typing bug
     * values are written back to ORME view
         * which sets the caret in the wrong place
-* [ ] add time delay on updating the ORME view
+* [x] add time delay on updating the ORME view
     * when typing in ED, text changes are written to ORME instantly
+* could abandon ORME view
+    * or could instead make all editors work line-by-line
+        * so every change is line-by-line
+        * that way if ORME view is missing something it just makes it uneditable in that view
+            * which is consistent with more visual views (like Gantt charts)
+* invent micro-diff format
+    * start with simple Draft JS text-only editor
+    * dispatch() should send a microdiff
+        * microdiff list is preserved in Redux
+        * editors parse the list to get their state
+            * every DraftJS editor has its own editorState
+                * because some may have highlighting/formatting, some not
+                * which means they've all got different block lists (JLOB)
+            * every editor should re-evaluate the entire microdiff list for every change
+                * because remote changes could arrive out of order
+                * don't get the editors to do it
+                    * the DataWrapper should merge all neighbouring microdiffs
+                        * into a minimal set of changes
+        * base this on some established real-time model synchronisation engine based on OT
+            * like [Racer](https://github.com/derbyjs/racer)
+        * for any kind of real-time sync, we need to bake a compatible data model
+            * [Collab editing](http://cricklet.github.io/sites/blue/index.html)
+            * need to choose between [OT or CRDT/WOOT](https://arxiv.org/ftp/arxiv/papers/1810/1810.02137.pdf)
+            * [Firebase](https://firebase.google.com/) is a mature OT-based solution
+            * [Textile](https://docs.textile.io/) is an open-source CRDT-based solution (I think)
 
 ### add line numbers to default (draft) markdown text editor
 * [Gist](https://gist.github.com/lixiaoyan/79b5740f213b8526d967682f6cd329c0)
