@@ -4,44 +4,13 @@ type: "task"
 state: "active"
 ---
 
-### think about Editor synchronisation (local and remote)
-+ only difference between the two is latency
-+ draft-js does at least have a model for dealing with this
-    + [race conditions in Draft](https://draftjs.org/docs/advanced-topics-editorstate-race-conditions)
-+ want to be able to accommodate updates from all type of view.  
-    + They can be nice elegant fast updates (native THUDS)
-    + pretty damn quick (translation from Draft.js on an update-by-update basis)
-    + or horribly slow complete reflowing (Prosemirror)
-        + should draw a line through Prosemirror because it can't be updated with deltas
-        + Then again, I don't have any evidence that Draft.js can either
-            + The serialised raw data structure isn't the internal native one 
-            + but it's immutable
-                + so the editorState can and should move from one editorState to a completely new editorState on each keypress, then render
-        + `handlePastedText` may be a way to do it
-
-### debug integration between value-based and editorState-based views
-* still only proof-of-concept, but better integration informs THUDS design
-* [x] fix missing content bug
-    * ORME view doesn't show all the sub-bullets
-    * ORME parser is a problem
-        * doesn't like bulletted lists where some (but not all) elements have a tick box
-    * It's sort of ruling ORME out of contention
-        * because we'll need to do a lot of work to parse out the incompatible bits
-    * Fundamental problem with these editors
-        * .md -> editor -> .md is currently a destructive op
-            * that's not acceptable
-        * Need to process text without destroying the things that don't meet the format
-* [x] ORME typing bug
-    * values are written back to ORME view
-        * which sets the caret in the wrong place
-* [x] add time delay on updating the ORME view
-    * when typing in ED, text changes are written to ORME instantly
+### research editor model (again)
 * could abandon ORME view
     * or could instead make all editors work line-by-line
         * so every change is line-by-line
         * that way if ORME view is missing something it just makes it uneditable in that view
             * which is consistent with more visual views (like Gantt charts)
-* invent micro-diff format
+* invent (or discover existing) micro-diff format
     * start with simple Draft JS text-only editor
     * dispatch() should send a microdiff
         * microdiff list is preserved in Redux
@@ -61,6 +30,17 @@ state: "active"
             * need to choose between [OT or CRDT/WOOT](https://arxiv.org/ftp/arxiv/papers/1810/1810.02137.pdf)
             * [Firebase](https://firebase.google.com/) is a mature OT-based solution
             * [Textile](https://docs.textile.io/) is an open-source CRDT-based solution (I think)
+    * research CRDT to see if it fits with text+microdiffs approach
+        * thinkope.com sits at the edge of a peer-to-peer network of Thinkope servers
+            * clients are spawned in a browser from a server
+                * but they participate in the network as equals
+            * servers bring a data set
+                * some servers might use APIs and auth to talk to data stores or data service providers (e.g. GitHub)
+        * leaning towards [automerge](https://github.com/automerge/automerge) for microdiff format
+            * [good HN-posted OT vs CRDT analysis](https://news.ycombinator.com/item?id=22039950)
+                * TinyMCE team opted for [OT and Slate](https://www.tiny.cloud/blog/real-time-collaborative-editing-slate-js)
+                * Commercial editors like [Froala](https://froala.com/wysiwyg-editor/pricing/)
+                    * not really an option for open-source Thinkope
 
 ### add line numbers to default (draft) markdown text editor
 * [Gist](https://gist.github.com/lixiaoyan/79b5740f213b8526d967682f6cd329c0)
@@ -108,6 +88,19 @@ state: "active"
     + readable by the <group>
     + writeable
     + commentable
++ every view has multiple lists of people
+    + each person has a role
+        + read-access
+            + contributor
+                + read-access and has submitted a pull request and had it accepted
+        + write-access
+            + collaborator
+                + write-access and has made changes
+    + each person-role may also have a status
+        + e.g. active
+            + nice to show a list of active collaborators on a single view where loads of people are messing with it
+            + thinking little circle with avatars
+                + that way you can watch people move between different parts of the project
 
 ### think about internal data structure
 * see [data structure design](/tech/data-structure)

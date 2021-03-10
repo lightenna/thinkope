@@ -5,6 +5,42 @@ state: "closed"
 sort: "newly completed at top"
 ---
 
+### think about Editor synchronisation (local and remote)
++ only difference between the two is latency
++ draft-js does at least have a model for dealing with this
+    + [race conditions in Draft](https://draftjs.org/docs/advanced-topics-editorstate-race-conditions)
++ want to be able to accommodate updates from all type of view.
+    + They can be nice elegant fast updates (native THUDS)
+    + pretty damn quick (translation from Draft.js on an update-by-update basis)
+    + or horribly slow complete reflowing (Prosemirror)
+        + should draw a line through Prosemirror because it can't be updated with deltas
+        + Then again, I don't have any evidence that Draft.js can either
+            + The serialised raw data structure isn't the internal native one
+            + but it's immutable
+                + so the editorState can and should move from one editorState to a completely new editorState on each keypress, then render
+        + `handlePastedText` may be a way to do it
+    + keeping non-Draft editors in the running helps ensure a better more flexible data-model
+        + though it's likely the first implementation will be for the _easiest_ editor (probably Draft at this stage)
+
+### debug integration between value-based and editorState-based views
+* still only proof-of-concept, but better integration informs THUDS design
+* [x] fix missing content bug
+    * ORME view doesn't show all the sub-bullets
+    * ORME parser is a problem
+        * doesn't like bulletted lists where some (but not all) elements have a tick box
+    * It's sort of ruling ORME out of contention
+        * because we'll need to do a lot of work to parse out the incompatible bits
+    * Fundamental problem with these editors
+        * .md -> editor -> .md is currently a destructive op
+            * that's not acceptable
+        * Need to process text without destroying the things that don't meet the format
+* [x] ORME typing bug
+    * values are written back to ORME view
+        * which sets the caret in the wrong place
+* [x] add time delay on updating the ORME view
+    * when typing in ED, text changes are written to ORME instantly
+> re-visit editor model before getting into specific integration exercises
+
 ### think about chat/video-sharing between thinkers
 + eval [WebRTC](https://github.com/jakub-leszczynski/video-calling-app-example) for peer-to-peer video
     + [latency for WebRTC](https://flashphoner.com/oh-webcam-online-broadcasting-latency-thou-art-a-heartless-bitch/)
