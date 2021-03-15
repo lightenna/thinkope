@@ -4,6 +4,15 @@ type: "task"
 state: "new"
 ---
 
+### make thinkope embeddable in existing git repos
+* Create thinkope remote theme
+    * Use on thinkope.com
+* Create minimal embed
+    * /docs folder, suitable for pasting/merging into existing repo
+    * roll out for other Lightenna open-source repos
+        * [Devops Workstream](https://github.com/lightenna/devops-workstream)
+* Add instructions for adopting remote theme
+
 ### capture selection state into URL
 + also apply URL selection to views
 + selection needs to be focus-aware

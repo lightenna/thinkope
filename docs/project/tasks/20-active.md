@@ -37,10 +37,18 @@ state: "active"
             * servers bring a data set
                 * some servers might use APIs and auth to talk to data stores or data service providers (e.g. GitHub)
         * leaning towards [automerge](https://github.com/automerge/automerge) for microdiff format
+            * interested in [ReasonML](https://reasonml.github.io/docs/en/what-and-why)
+                * Thinkope is graph-based, so could fit with [GUN](https://gun.eco/)
             * [good HN-posted OT vs CRDT analysis](https://news.ycombinator.com/item?id=22039950)
                 * TinyMCE team opted for [OT and Slate](https://www.tiny.cloud/blog/real-time-collaborative-editing-slate-js)
+                    * take another look at [Slate](https://github.com/ianstormtaylor/slate) as well-aligned on 'why'
                 * Commercial editors like [Froala](https://froala.com/wysiwyg-editor/pricing/)
                     * not really an option for open-source Thinkope
+                * [CRDT](https://crdt.tech/implementations) as subset of OT
+                    * [data laced with history](http://archagon.net/blog/2018/03/24/data-laced-with-history/)
+                        * [semi-lattice rather than disjoint tree structure](https://www.google.com/search?rlz=1C1GCEA_enGB835GB835&sxsrf=ALeKk03EYRIxbtiUD6e67PFcdUiIGZgrrg%3A1615801142721&ei=NitPYI3CK8Cs1fAPjpqciAw&q=semilattice+vs+tree&oq=semilattice+vs+tree&gs_lcp=Cgdnd3Mtd2l6EAMyBQghEKABMgUIIRCgAToHCAAQsAMQQzoHCC4QsAMQQzoHCAAQRxCwAzoCCAA6BAgAEB46BggAEBYQHlCkjwFYm5wBYLydAWgBcAJ4AIABd4gB9AWSAQM4LjGYAQCgAQGqAQdnd3Mtd2l6yAEKwAEB&sclient=gws-wiz&ved=0ahUKEwiNtY6pgLLvAhVAVhUIHQ4NB8EQ4dUDCA0&uact=5)
+            * model interacts with DB, so could be [PouchDB](https://pouchdb.com/)
+        * look at [Logux](https://logux.io/)
 
 ### add line numbers to default (draft) markdown text editor
 * [Gist](https://gist.github.com/lixiaoyan/79b5740f213b8526d967682f6cd329c0)
