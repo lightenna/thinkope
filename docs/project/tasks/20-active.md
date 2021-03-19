@@ -5,13 +5,48 @@ state: "active"
 ---
 
 ### make thinkope embeddable in existing git repos
-* Create thinkope remote theme
-    * Use on thinkope.com
-* Create minimal embed
-    * /docs folder, suitable for pasting/merging into existing repo
-    * roll out for other Lightenna open-source repos
-        * [Devops Workstream](https://github.com/lightenna/devops-workstream)
-* Add instructions for adopting remote theme
+* think about thinkope remote theme
+    * Readily adopted for existing project
+        * but does step on existing choices
+            * such as the theme selected by the project for their github pages
+            * needs to be more flexible than that
+        * search for a way to bundle up an installable component
+            * we need to embed the SPA trick
+                * that requires a 404-page redirect, which means a theme really
+        * simplest way is an HTML page
+            * need to build flexibility into the URL structure
+                * either automatic redirect via the 404 hack
+                * or manual redirect using query parameter ?q=
+            * the app needs to allow for linking using proper URLs or linking using ?q parameter
+                * parser is already sensitive
+    * Could use on thinkope.com
+        * it's not quite as important to use on thinkope.com
+        * if the embed is a single HTML file that can be cut-and-pasted
+            * probably should be a simple .js include as well
+* Create minimal embeds
+    * file
+        * suitable for pasting/merging into existing repo
+            * simple thinkope.html file to show full thinkope app
+        * roll out for other Lightenna open-source repos
+            * [Devops Workstream](https://github.com/lightenna/devops-workstream)
+    * embed
+        * partial view for inclusion into an existing page
+        * link to thinkope.com to edit this repo
+* Add instructions for `Get started`
+    * easy 'just use' on any repo
+        * form (autocomplete) to fill in your repo name/URL
+            * generates link to thinkope.com/app to view/edit*
+    * variety of install methods
+        * your own Thinkope server (npm install, npm start)
+        * add a page to your GitHub pages (file)
+        * embed a Thinkope view on your existing page (embed)
+* Getting started is separate from opening up files
+    * Once started, you get to see a file selector modal to select which file/files to edit
+        * Or create option
+        * Or create from sparks
+    * but an embed can pre-select the file/files and views (all using URL)
+* First steps
+    * single embed on Devops Workstream
 
 ### research editor model (again)
 * could abandon ORME view
