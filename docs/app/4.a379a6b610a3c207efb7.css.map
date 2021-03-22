@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/features/draft-js/styles/editorView.css"],"names":[],"mappings":"AAAA,QACE,qBAAuB,CACvB,YAAa,C","file":"4.a379a6b610a3c207efb7.css","sourcesContent":[".editor {\n  border: 1px solid black;\n  padding: 20px;\n}\n"],"sourceRoot":""}

@@ -1,11 +1,11 @@
 import React from 'react';
-import {Route, Switch} from "react-router-dom";
 import './App.scss';
+import {Route, Switch} from "react-router-dom";
 import { index } from "../routes/";
 
 function App() {
     return (
-        <div className="App">
+        <div className="thinkope-app">
             <h2>Far out in the uncharted backwaters....</h2>
             <Switch>
                 {index.map((route, i) => (

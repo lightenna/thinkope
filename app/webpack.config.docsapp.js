@@ -4,10 +4,11 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
-const BASEPATH = '/app/';
+const appname = 'thinkope';
+const BASEPATH = '/app';
 const GLOBALS = {
     'process.env.NODE_ENV': JSON.stringify('production'),
-    'process.env.APP_BASEPATH': JSON.stringify(BASEPATH),
+    'process.env.APP_BASEPATH': JSON.stringify(BASEPATH + '/'),
     __DEV__: false
 };
 
@@ -20,9 +21,9 @@ module.exports = {
     target: 'web',
     mode: 'production',
     output: {
-        path: path.resolve(__dirname, '../docs/app'),
-        publicPath: '/app/',
-        filename: '[name].[contenthash].js'
+        path: path.resolve(__dirname, '../docs' + BASEPATH),
+        publicPath: BASEPATH + '/',
+        filename: `${appname}.js`
     },
     plugins: [
         // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
@@ -30,7 +31,7 @@ module.exports = {
 
         // Generate an external css file with a hash in the filename
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
+            filename: `${appname}.css`
         }),
 
         // Create manifest.json
