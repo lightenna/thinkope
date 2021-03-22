@@ -38,7 +38,7 @@ module.exports = {
 
         // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
         new HtmlWebpackPlugin({
-            template: 'src/index.ejs',
+            template: 'public/index.html',
             favicon: 'public/favicon.ico',
             minify: {
                 removeComments: true,
@@ -135,6 +135,24 @@ module.exports = {
                     }
                 ]
             },
+            // search and replace react-script subs in files like index.html
+            {
+                test: /.*\.html$/,
+                loader: 'raw-loader'
+            },
+            {
+                test: /.*\.html$/,
+                loader: 'string-replace-loader',
+                options: {
+                    multiple: [
+                        {
+                            search: /%PUBLIC_URL%/g,
+                            replace: '/app'
+                        }
+                    ]
+                }
+            },
+            // process SCSS
             {
                 test: /(\.css|\.scss|\.sass)$/,
                 use: [
