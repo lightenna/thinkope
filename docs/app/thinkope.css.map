@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/components/views/ContainerView.scss"],"names":[],"mappings":";;AAAA,0BAEI,QAAS,CAFb,wCAMM,UAAW,C","file":"thinkope.css","sourcesContent":[".view.type-container {\n  .sub {\n    margin: 0;\n  }\n  .orient-horiz {\n    .sub {\n      float: left;\n    }\n  }\n}"],"sourceRoot":""}
