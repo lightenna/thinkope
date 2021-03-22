@@ -2,7 +2,7 @@ import React from 'react';
 import {withRouter} from "react-router";
 import PropTypes from "prop-types";
 import ViewWrapper from "./ViewWrapper";
-import editorStateWrap from "../features/editor/editorStateWrap";
+import rootWrap from "../features/rootWrap";
 import {find} from "../datasources/";
 import qs from "qs";
 
@@ -53,7 +53,7 @@ class DataWrapper extends React.Component {
             const req_url = dsmetadata.getUrl(locmd.path, locmd.query);
             dsmetadata.getData(req_url)
                 .then((data) => {
-                    this.props.updateEditorRawText(data);
+                    this.props.updateValue(data);
                 })
                 .catch((err) => {
                     error_handler(err);
@@ -78,5 +78,5 @@ class DataWrapper extends React.Component {
     }
 }
 
-// editorStateWrap to dispatch actions to store, withRouter to receive match and location props
-export default withRouter(editorStateWrap(DataWrapper));
+// rootWrap to dispatch actions to store, withRouter to receive match and location props
+export default withRouter(rootWrap(DataWrapper));

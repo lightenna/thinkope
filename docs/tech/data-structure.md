@@ -41,6 +41,54 @@ type: "techdoc"
 + this means that the client has to parse
     + and potentially reorganise blocks
     + into a nested structure
++ different views will need different properties of the data
+    + level of detail
+        + show some but not necessarily all nested data
+    + references
+        + relationships between blocks
+
+### Massively nested data structures
++ [The Blind Men and the Elephant](https://en.wikisource.org/wiki/The_poems_of_John_Godfrey_Saxe/The_Blind_Men_and_the_Elephant)
+    + each user sees a different subset of the data
+        + high-level visualisations take the top of the tree
+        + low-level visualisations focus on a small collection of leaf nodes
++ Thinkope Unified Data Structure (THUDS)
+    + each client stores a partial view of the tree
+        + JLOB
+        + references are all baked into the blocks
+        + each block has an ID
+        + IDs allow us to make references to other blocks
+            + fast lookup needs to be done by ID
+                + hash:node
+                    ```
+                        {
+                            "hash-12jg982ty9gfsnd": {
+                                content: "It was six men of Indostan"
+                            }
+                        }
+                    ```
+            + Draft.js exported content structure is close
+                - it's an array rather than an object
+    + suspect we'll end up supporting some kind of hierarchy
+        + THUDS at the root
+            + translated to JLOB/value in features/xxxWrap
+        + an array of supported sub-types (features)
+            + Draft-type editors (features/draft-js)
+            + simple text editors
+            + THUDS-native editors
+        + views can choose whether they hook into THUDS or one of the sub-types
+            + the key thing is that all the information is in every sub-type
+        + the sub-types have document constraints
+            + e.g. Draft-type editors need a linear list of lines
+                + they show those lines as a whole document
+                + that document may be a subset of the theoretical total document
+                    + it can be a _partial_ view of the total doc
+                + that document must be dense
+                    + I don't think we can cope with sparse docs in Draft
+                        + it will be too hard to reconcile boundaries
+                        + or to give the user clear information about how their edits
+                            + intersect with the boundaries/sparse sections of the doc
+                    + it's conceptually hard enough that they're seeing some part of the total doc
 
 ### Changes
 + a change is a patch

@@ -8,7 +8,7 @@ export const getEmptyState = () => {
 };
 
 export const editorStateSlice = createSlice({
-    name: 'editor',
+    name: 'editorState',
     // initialState used by editors before content loaded
     initialState: {
         jlob: getEmptyState(),

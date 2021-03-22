@@ -3,11 +3,13 @@ import qs from 'qs';
 import GenericLazyLoad from './GenericLazyLoad';
 import PropTypes from "prop-types";
 // directly loaded views
-import TestEditor from '../features/editor/components/TestEditor';
+import TestEditor from '../features/draft-js/components/TestEditor';
 import ContainerView from './views/ContainerView';
 import ViewErrorBoundary from "./boundaries/ViewErrorBoundary";
 // lazy-loaded views
-const DefaultEditor = React.lazy(() => import('../features/editor/components/DefaultEditor'));
+const EditorDefault = React.lazy(() => import('../features/draft-js/components/EditorDefault'));
+const EditorMarkdownShortcuts = React.lazy(() => import('../features/draft-js/components/EditorMarkdownShortcuts'));
+const OutlineRichMarkdownEditor = React.lazy(() => import('../features/prosemirror/components/OutlineRichMarkdownEditor'));
 
 const default_view = {
     type: 'editor',
@@ -50,7 +52,14 @@ class ViewWrapper extends React.Component {
                 compiled_view['class_type'] = ContainerView;
                 break;
             case 'editor' :
-                compiled_view['class_type'] = DefaultEditor;
+            case 'editorDefault' :
+                compiled_view['class_type'] = EditorDefault;
+                break;
+            case 'editorMarkdownShortcuts' :
+                compiled_view['class_type'] = EditorMarkdownShortcuts;
+                break;
+            case 'outlineRichMarkdownEditor' :
+                compiled_view['class_type'] = OutlineRichMarkdownEditor;
                 break;
             case 'test' :
             default :

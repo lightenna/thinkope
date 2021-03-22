@@ -87,4 +87,16 @@ type: "techdoc"
             + uppercasing
 + Markdown editor view allows you to edit rendered markdown
     + add UI buttons for bold/italic/list etc.
-https://github.com/withspectrum/draft-js-markdown-plugin
++ Markdown conversion
+    + sstur
+        + [draft-js-import-markdown](https://www.npmjs.com/package/draft-js-import-markdown)
+        + [draft-js-export-markdown](https://www.npmjs.com/package/draft-js-export-markdown)
+    + rosey
+        + [markdown-draft-js](https://github.com/Rosey/markdown-draft-js)
+            + uses [remarkable.js](https://github.com/jonschlinkert/remarkable)
+                + which is interesting as a common parser layer
+    + could be converted into contentState
+        + i.e. could be shared across all editors as processed contentState
+    + could be left as raw markdown text parsed into draft blocks (JLOB)
+        + which then relies on the editor to render it
+            + but leave the content unaffected

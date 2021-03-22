@@ -4,7 +4,7 @@ import 'draft-js/dist/Draft.css';
 import '../styles/editorView.css';
 import PropTypes from "prop-types";
 
-class DefaultEditor extends Component {
+class EditorDefault extends Component {
 
     constructor(props) {
         super(props);
@@ -64,4 +64,4 @@ class DefaultEditor extends Component {
     }
 }
 
-export default DefaultEditor;
+export default EditorDefault;
