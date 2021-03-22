@@ -46,7 +46,9 @@ state: "active"
         * Or create from sparks
     * but an embed can pre-select the file/files and views (all using URL)
 * First steps
-    * single embed on Devops Workstream
+    * [X] create single embed on Devops Workstream
+    * [ ] load data- set URL into embed
+        * treat AppAsEmbed as similarly to App as possible
 
 ### research editor model (again)
 * could abandon ORME view
