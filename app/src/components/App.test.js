@@ -26,5 +26,5 @@ test('renders app as embed without error', () => {
             </ConnectedRouter>
         </Provider>
     );
-    expect(getByText(/Far out/i)).toBeInTheDocument();
+    expect(getByText(/The unfashionable/i)).toBeInTheDocument();
 });
