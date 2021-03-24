@@ -28,9 +28,9 @@
     "rich-markdown-editor": "^11.3.0",
     "styled-components": "^5.2.1"
   },
-  "comment": "note the absence of ^; react-scripts@4.0.2 -> webpack@4.44.2,babel-loader:8.1.0",
+  "comment": "note the absence of ^; react-scripts@4.0.3 -> webpack@4.44.2,babel-loader:8.1.0",
   "devDependencies": {
-    "react-scripts": "^4.0.2",
+    "react-scripts": "^4.0.3",
     "webpack": "4.44.2",
     "webpack-cli": "^4.5.0",
     "html-webpack-plugin": "^4.5.2",
