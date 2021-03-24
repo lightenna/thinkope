@@ -5,7 +5,7 @@ import { index } from "../routes/";
 
 function App() {
     return (
-        <div className="thinkope-app">
+        <div className="thinkhope-app">
             <h2>Far out in the uncharted backwaters....</h2>
             <Switch>
                 {index.map((route, i) => (

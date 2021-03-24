@@ -11,7 +11,7 @@ state: "new"
     + views without it set some kind of highlight or virtual selection
 + see [view design](/tech/view-design)
 
-### create local file service [parent](/project/user-stories/user-can-view-a-thinkope)
+### create local file service [parent](/project/user-stories/user-can-view-a-thinkhope)
 + read file from local source
     + Node.js microservice
     + local instance of TH that serves local repo
@@ -31,7 +31,7 @@ state: "new"
 + create auth
     + might be worth doing auth clean, without any deps
     + because it will facilitate others' deployment
-+ deploy to https://services.thinko.pe/
++ deploy to https://services.thinkho.pe/
     + my instance of the microservices that support TH
     + provisioned separately using K8s / Helm chart
         + stick with K8s cluster
@@ -57,7 +57,7 @@ state: "new"
     * first view that loads and requests focus
     * need some kind of API that the views can request focus from
 
-### resize container view by dragging boundary [parent](/project/user-stories/user-can-view-a-thinkope)
+### resize container view by dragging boundary [parent](/project/user-stories/user-can-view-a-thinkhope)
 * [ ] get container view to show a line separating the contained views
 * [ ] detect hover over line
     * allow line to be dragged left or right
@@ -72,7 +72,7 @@ https://reactrocket.com/post/draft-js-search-and-replace/
 
 ### refactor theme files out into a new remote theme
 + like to remove all theme cruft from `/docs` folder
-    + thinkope-theme
+    + thinkhope-theme
 
 ### evaluate comment options
 + Comments option using source infra
@@ -90,7 +90,7 @@ https://reactrocket.com/post/draft-js-search-and-replace/
 + use [MyBinder](https://mybinder.readthedocs.io/en/latest/)
     + for docker-based run-time execution of Notebooks
 
-### switch from whole-text to patches [parent](/project/user-stories/user-can-view-a-thinkope)
+### switch from whole-text to patches [parent](/project/user-stories/user-can-view-a-thinkhope)
 + currently passing whole-text
   - which slows dramatically as text length increases
   + because it creates a lot of re-rendering and string parsing

@@ -52,7 +52,7 @@ type: "techdoc"
     + each user sees a different subset of the data
         + high-level visualisations take the top of the tree
         + low-level visualisations focus on a small collection of leaf nodes
-+ Thinkope Unified Data Structure (THUDS)
++ Thinkhope Unified Data Structure (THUDS)
     + each client stores a partial view of the tree
         + JLOB
         + references are all baked into the blocks

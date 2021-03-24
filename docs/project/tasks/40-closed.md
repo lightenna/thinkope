@@ -71,7 +71,7 @@ sort: "newly completed at top"
 ### load content across all views
 * currently only loading into Draft.js (JLOB) views (markdownEditor and test)
 
-### create markdown editor [parent](/project/user-stories/user-can-view-a-thinkope)
+### create markdown editor [parent](/project/user-stories/user-can-view-a-thinkhope)
 * [Draft.js](https://github.com/facebook/draft-js) - for editor view
     * Can embed multiple editors from the [awesome gallery](https://github.com/nikgraf/awesome-draft-js)
 * three views
@@ -206,7 +206,7 @@ sort: "newly completed at top"
         * it could be in the future, but for now let's stick to simple text
 * double-dispatch to update both editorState and value
 
-### apply focus to first 'focusable' view in container [parent](/project/user-stories/user-can-view-a-thinkope)
+### apply focus to first 'focusable' view in container [parent](/project/user-stories/user-can-view-a-thinkhope)
 + probably a depth-first search across all containers
     + until we find a focusable view
     + can always change out the search order later
@@ -246,7 +246,7 @@ sort: "newly completed at top"
     + that's where we're currently doing the loadData()
 > ignore for now
 
-### cook up some kind of exception handling and reporting [parent](/project/user-stories/user-can-view-a-thinkope)
+### cook up some kind of exception handling and reporting [parent](/project/user-stories/user-can-view-a-thinkhope)
 + throw exception on bad datasource
     + use generically defined ErrorBoundaries
         + don't worry about error overlay in dev (can 'X')
@@ -260,19 +260,19 @@ sort: "newly completed at top"
 + for now should just show simple text editor
     + lets users write something...
 
-### create first view [parent](/project/user-stories/user-can-view-a-thinkope)
+### create first view [parent](/project/user-stories/user-can-view-a-thinkhope)
 + is a React component
 + simple view
 + takes JSON data and renders to DOM
 
-### set up @github datasource [parent](/project/user-stories/user-can-view-a-thinkope)
+### set up @github datasource [parent](/project/user-stories/user-can-view-a-thinkhope)
 + pre-bake credentials for URL
     + [base](https://api.github.com/)
 + add whitelist of query parameters
     + then pass on those params in the request
         + e.g. ref (for specifying the branch)
 
-### research loading data from first source [parent](/project/user-stories/user-can-view-a-thinkope)
+### research loading data from first source [parent](/project/user-stories/user-can-view-a-thinkhope)
 + pass to Redux (internal state) on init
     + [draftJS how to init](https://stackoverflow.com/questions/35884112/draftjs-how-to-initiate-an-editor-with-content)
 + identify ingest location
@@ -296,26 +296,26 @@ sort: "newly completed at top"
                 + simple node file server [serve-static](http://expressjs.com/en/resources/middleware/serve-static.html)
     + local isn't obvious
         + but it's straight-forward for a developer's first-use experience
-            + start thinkope/app, start local node express app, play with local files
+            + start thinkhope/app, start local node express app, play with local files
         + probably want to make it align to the @github datasource operations
             + we can use rest calls directly into that
                 + might be worth coding that first
                     + /repos/:owner/:repo/contents/:path
-                        + [api request for metadata about file](https://api.github.com/repos/lightenna/thinkope/contents/README.md)
+                        + [api request for metadata about file](https://api.github.com/repos/lightenna/thinkhope/contents/README.md)
                             + includes download link for file
-                        + [http link to file](https://raw.githubusercontent.com/lightenna/thinkope/develop/README.md)
+                        + [http link to file](https://raw.githubusercontent.com/lightenna/thinkhope/develop/README.md)
                             + or API request 'github' link for base64-encoded content
-                        + [github link](https://api.github.com/repos/lightenna/thinkope/git/blobs/ab936d52ff60645a99f9d97cf6687c2fda47444a)
+                        + [github link](https://api.github.com/repos/lightenna/thinkhope/git/blobs/ab936d52ff60645a99f9d97cf6687c2fda47444a)
       > do @github datasource first
 
 ### produce mock JSON data
 + static example to feed initial view development
     + will also help with testing
 
-### test two editor views side-by-side [parent](/project/user-stories/user-can-view-a-thinkope)
+### test two editor views side-by-side [parent](/project/user-stories/user-can-view-a-thinkhope)
 + sync works with two isolated EditorState objects
 
-### embed editor view [parent](/project/user-stories/user-can-view-a-thinkope)
+### embed editor view [parent](/project/user-stories/user-can-view-a-thinkhope)
 + redux based
 + start with [DraftJS](https://draftjs.org/)
 + capture and propagate update
@@ -444,7 +444,7 @@ sort: "newly completed at top"
     + want to use a relatively standard patch format
 + maybe [JSONPatch](http://jsonpatch.com/)
 
-### create container view [parent](/project/user-stories/user-can-view-a-thinkope)
+### create container view [parent](/project/user-stories/user-can-view-a-thinkhope)
 + acceptance criteria
     + [X] contains nested 1 or more sub-views
     + [X] allows proportional screen splitting
@@ -475,9 +475,9 @@ sort: "newly completed at top"
 
 ### fix missing manifest.json for packaged docsapp
 
-### stop flash of 'Page not found' [parent](/project/user-stories/user-can-view-a-thinkope)
+### stop flash of 'Page not found' [parent](/project/user-stories/user-can-view-a-thinkhope)
 
-### migrate away from Slingshot [parent](/project/user-stories/user-can-view-a-thinkope)
+### migrate away from Slingshot [parent](/project/user-stories/user-can-view-a-thinkhope)
 + too many issues with hot reloading
 + use create-react-app instead
 `npx create-react-app my-app --template redux`
@@ -485,7 +485,7 @@ sort: "newly completed at top"
 + [X] rebuild webpack config
 + [X] deploy live
 
-### create react-based SPA [parent](/project/user-stories/user-can-view-a-thinkope)
+### create react-based SPA [parent](/project/user-stories/user-can-view-a-thinkhope)
 + [X] start with React Router
 [SPA ref](https://github.com/rafgraph/spa-github-pages)
     + [X] set up 404 redirection as part of integrated microsite
@@ -499,13 +499,13 @@ sort: "newly completed at top"
     + symmetric with 404 handler that injects ?p= see [404.md](/docs/assets/404.md)
     + make app rewrite URL in history
         + remove ?p=/
-    + [test URL](https://www.thinkope.com/app/?p=/fish/fowl)
+    + [test URL](https://www.thinkho.pe/app/?p=/fish/fowl)
 + [X] fix /app embedding
     + routes don't work when prefixed with /app
         + mock-up local /dist with parameterised basepath
 + [X] clear down dist folder before build
 
-### create simple placeholder favicon [parent](/project/user-stories/user-can-view-a-thinkope)
+### create simple placeholder favicon [parent](/project/user-stories/user-can-view-a-thinkhope)
 + [Th](https://favicon.io/favicon-generator/?t=Th&ff=ABeeZee&fs=70&fc=%23FFFFFF&b=rounded&bc=%23888)
 
 ### create index page for /tech
@@ -515,12 +515,12 @@ sort: "newly completed at top"
 + index or README?
     + index
     + the README is for GitHub.com, which already indexes fine for now
-+ tech should use Thinkope too
++ tech should use Thinkhope too
     + [tech docs](/tech) is full of thinking
     + it's a less clear use-case than [project docs](/project) (fits easily with todo)
         + but it's exactly what we're trying to encourage
 
-### evaluate lists on GitHub.com [parent](/project/user-stories/user-can-view-a-thinkope)
+### evaluate lists on GitHub.com [parent](/project/user-stories/user-can-view-a-thinkhope)
 + [X] commit and push latest site
 + [X] establish what the default view looks like
 + [X] check README.md markdown section link ('Getting started')
@@ -548,10 +548,10 @@ sort: "newly completed at top"
         + but that's not the end of the world
         + can script it
     + project management docs don't have to span
-        + can live only in thinkope-main not thinkope-website
+        + can live only in thinkhope-main not thinkhope-website
         + means the website starts to focus more on the usage
             + whereas the tech evolution of the project in main
-        + can manage them with thinkope app
+        + can manage them with thinkhope app
 + single repo with remote theme
     + use remote theme
 [remote themes in github pages](https://github.blog/2017-11-29-use-any-theme-with-github-pages/)

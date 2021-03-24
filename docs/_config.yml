@@ -1,9 +1,9 @@
 # Welcome to Jekyll!
 # Site settings {{ site.varname }}
-title: Thinkope
+title: Thinkhope
 email: cleverlight@users.noreply.github.com
 description: >-
-    Thinkope is an online collaboration tool
+    Thinkhope is an online collaboration tool
 twitter_username: "lightenna"
 github_username: "lightenna"
 minimal_mistakes_skin: default
@@ -22,8 +22,8 @@ include:
     - _posts
     # assets (implicit)
     - tech
-    # project (excluded from microsite, viewed through Thinkope)
-    # sparks (excluded from microsite, templates instantiated through Thinkope)
+    # project (excluded from microsite, viewed through Thinkhope)
+    # sparks (excluded from microsite, templates instantiated through Thinkhope)
 
 # Exclude from processing
 exclude:

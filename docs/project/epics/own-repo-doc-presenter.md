@@ -25,8 +25,8 @@
         * Allow rendered view to be embedded into another site
             * automatically updated
 * Editable project plan
-    * requires thinkope.com-brokered GitHub auth login
-    * requires thinkope.com save
+    * requires thinkho.pe-brokered GitHub auth login
+    * requires thinkho.pe save
         * if you're an owner/collaborator
             * commit to project git repo
         * if you're another git user

@@ -4,8 +4,8 @@ type: "task"
 state: "active"
 ---
 
-### make thinkope embeddable in existing git repos
-* think about thinkope remote theme
+### make thinkhope embeddable in existing git repos
+* think about thinkhope remote theme
     * Readily adopted for existing project
         * but does step on existing choices
             * such as the theme selected by the project for their github pages
@@ -19,27 +19,27 @@ state: "active"
                 * or manual redirect using query parameter ?q=
             * the app needs to allow for linking using proper URLs or linking using ?q parameter
                 * parser is already sensitive
-    * Could use on thinkope.com
-        * it's not quite as important to use on thinkope.com
+    * Could use on thinkho.pe
+        * it's not quite as important to use on thinkho.pe
         * if the embed is a single HTML file that can be cut-and-pasted
             * probably should be a simple .js include as well
 * Create minimal embeds
     * file
         * suitable for pasting/merging into existing repo
-            * simple thinkope.html file to show full thinkope app
+            * simple thinkhope.html file to show full thinkhope app
         * roll out for other Lightenna open-source repos
             * [Devops Workstream](https://github.com/lightenna/devops-workstream)
     * embed
         * partial view for inclusion into an existing page
-        * link to thinkope.com to edit this repo
+        * link to thinkho.pe to edit this repo
 * Add instructions for `Get started`
     * easy 'just use' on any repo
         * form (autocomplete) to fill in your repo name/URL
-            * generates link to thinkope.com/app to view/edit*
+            * generates link to thinkho.pe/app to view/edit*
     * variety of install methods
-        * your own Thinkope server (npm install, npm start)
+        * your own Thinkhope server (npm install, npm start)
         * add a page to your GitHub pages (file)
-        * embed a Thinkope view on your existing page (embed)
+        * embed a Thinkhope view on your existing page (embed)
 * Getting started is separate from opening up files
     * Once started, you get to see a file selector modal to select which file/files to edit
         * Or create option
@@ -77,19 +77,19 @@ state: "active"
             * [Firebase](https://firebase.google.com/) is a mature OT-based solution
             * [Textile](https://docs.textile.io/) is an open-source CRDT-based solution (I think)
     * research CRDT to see if it fits with text+microdiffs approach
-        * thinkope.com sits at the edge of a peer-to-peer network of Thinkope servers
+        * thinkho.pe sits at the edge of a peer-to-peer network of Thinkhope servers
             * clients are spawned in a browser from a server
                 * but they participate in the network as equals
             * servers bring a data set
                 * some servers might use APIs and auth to talk to data stores or data service providers (e.g. GitHub)
         * leaning towards [automerge](https://github.com/automerge/automerge) for microdiff format
             * interested in [ReasonML](https://reasonml.github.io/docs/en/what-and-why)
-                * Thinkope is graph-based, so could fit with [GUN](https://gun.eco/)
+                * Thinkhope is graph-based, so could fit with [GUN](https://gun.eco/)
             * [good HN-posted OT vs CRDT analysis](https://news.ycombinator.com/item?id=22039950)
                 * TinyMCE team opted for [OT and Slate](https://www.tiny.cloud/blog/real-time-collaborative-editing-slate-js)
                     * take another look at [Slate](https://github.com/ianstormtaylor/slate) as well-aligned on 'why'
                 * Commercial editors like [Froala](https://froala.com/wysiwyg-editor/pricing/)
-                    * not really an option for open-source Thinkope
+                    * not really an option for open-source Thinkhope
                 * [CRDT](https://crdt.tech/implementations) as subset of OT
                     * [data laced with history](http://archagon.net/blog/2018/03/24/data-laced-with-history/)
                         * [semi-lattice rather than disjoint tree structure](https://www.google.com/search?rlz=1C1GCEA_enGB835GB835&sxsrf=ALeKk03EYRIxbtiUD6e67PFcdUiIGZgrrg%3A1615801142721&ei=NitPYI3CK8Cs1fAPjpqciAw&q=semilattice+vs+tree&oq=semilattice+vs+tree&gs_lcp=Cgdnd3Mtd2l6EAMyBQghEKABMgUIIRCgAToHCAAQsAMQQzoHCC4QsAMQQzoHCAAQRxCwAzoCCAA6BAgAEB46BggAEBYQHlCkjwFYm5wBYLydAWgBcAJ4AIABd4gB9AWSAQM4LjGYAQCgAQGqAQdnd3Mtd2l6yAEKwAEB&sclient=gws-wiz&ved=0ahUKEwiNtY6pgLLvAhVAVhUIHQ4NB8EQ4dUDCA0&uact=5)

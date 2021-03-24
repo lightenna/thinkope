@@ -1,7 +1,7 @@
 
 ### Target product features
-* Create new thinkope
-    * Load from public git repo such as [Thinkope](https://github.com/lightenna/thinkope)
+* Create new thinkhope
+    * Load from public git repo such as [Thinkhope](https://github.com/lightenna/thinkhope)
         * no need to branch/PR until save
     * Create from spark template
         * no need to create repo until save

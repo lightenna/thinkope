@@ -7,7 +7,7 @@ function AppAsEmbed() {
     const path = '';
     const querystr = '';
     return (
-        <div className="thinkope-embed">
+        <div className="thinkhope-embed">
             <h2>The unfashionable end of the western spiral arm....</h2>
             <DataLoadErrorBoundary>
                 <DataWrapper.WrappedComponent match={{params:{path: path, url: path}}} location={{pathname: path, search: querystr}}/>

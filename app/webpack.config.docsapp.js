@@ -4,8 +4,8 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
-const APPNAME = 'thinkope';
-const BASEDOMAIN = 'www.thinkope.com';
+const APPNAME = 'thinkhope';
+const BASEDOMAIN = 'www.thinkho.pe';
 const BASEPATH = '/app';
 const GLOBALS = {
     'process.env.NODE_ENV': JSON.stringify('production'),

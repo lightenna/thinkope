@@ -1,8 +1,8 @@
-# Thinkope
+# Thinkhope
 Thinking, syncopated
 
 ## Local source
-This is microservice that exposes a local datasource to the Thinkope app.
+This is microservice that exposes a local datasource to the Thinkhope app.
 
 ## Getting started
 ```

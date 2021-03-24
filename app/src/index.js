@@ -8,10 +8,10 @@ import {Provider} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import {ConnectedRouter} from 'connected-react-router';
 
-const thinkope_CLASSNAME = 'thinkope';
+const thinkhope_CLASSNAME = 'thinkhope';
 
 // find and attach to target DOM elements
-const dom_target_elements = Array.from(document.getElementsByClassName(thinkope_CLASSNAME));
+const dom_target_elements = Array.from(document.getElementsByClassName(thinkhope_CLASSNAME));
 dom_target_elements.forEach((elem, i) => {
     // look for data- attributes on DOM element
     const mode = elem.getAttribute('data-mode') || 'app';
